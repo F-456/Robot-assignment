@@ -18,8 +18,6 @@ int main()
     {
         cout << "file opening error please check your file name again" << endl;
     }
-    else
-        cout << "config file opened" << endl;
 
     while (getline(file_in, information))
     {
