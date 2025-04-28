@@ -4,6 +4,22 @@
 #include <sstream>
 using namespace std;
 
+void diaplayBattlefield(int row, int column){
+    for(int i = 0; i<= row * 2; ++i){
+        for(int j = 0; j<= column * 2; ++j){
+            if (i % 2 == 0){
+                if (j % 2 == 0) cout << "+";
+                else cout << "---";
+            }
+            else{
+                if (j % 2 == 0) cout << "|";
+                else cout << "   ";
+                }
+        }
+        cout << endl;
+    }
+}
+
 class Robot
 {
 private:
@@ -35,6 +51,11 @@ int main()
     ofstream file_out("example");
     file_in.open(Obj.file_name);
 
+    int m = 80;
+    int n = 50;
+
+    diaplayBattlefield(m,n);
+
     if (!file_in.is_open())
     {
         cout << "file opening error please check your file name again" << endl;
@@ -42,7 +63,7 @@ int main()
 
     while (getline(file_in, information))
     {
-        cout << information;
+        cout << information << endl;
     }
 
     file_in.close();
