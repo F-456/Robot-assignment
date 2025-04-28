@@ -1,8 +1,19 @@
-
+/**********|**********|**********|
+Program: YOUR_FILENAME.cpp / YOUR_FILENAME.h
+Course: Data Structures and Algorithms
+Trimester: 2410
+Name: Frank Carrano
+ID: 1071001234
+Lecture Section: TC101
+Tutorial Section: TT1L
+Email: abc123@yourmail.com
+Phone: 018-1234567
+**********|**********|**********/
 #include <iostream>
 #include <fstream>
 #include <sstream>
 using namespace std;
+#include "function.h"
 
 void diaplayBattlefield(int row, int column){
     for(int i = 0; i<= row * 2; ++i){
@@ -60,6 +71,8 @@ int main()
     {
         cout << "file opening error please check your file name again" << endl;
     }
+    else
+        cout << "config file opened" << endl;
 
     while (getline(file_in, information))
     {
