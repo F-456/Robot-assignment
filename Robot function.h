@@ -24,7 +24,6 @@ private:
     string name;
 
 public:
-    string file_name = "Robot_config.cfg";
     string config_info = "";
     // Robot_move(string name, int x, int y);
     void move(int dx, int dy);
@@ -44,4 +43,5 @@ class SeeingRobot : public Robot
 class ThinkingRobot : public Robot
 {
 };
+
 #endif
