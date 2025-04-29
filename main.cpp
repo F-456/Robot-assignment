@@ -1,29 +1,18 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "function.h"
+#include "Robot function.h"
+#include "Frame.h"
 
 using namespace std;
 
 int main()
 {
-    system("cd");
-    string information;
-    Robot Obj;
-    ifstream file_in;
-    ofstream file_out("example");
-    file_in.open(Obj.file_name);
 
-    if (!file_in.is_open())
-    {
-        cout << "file opening error please check your file name again" << endl;
-    }
+    string file_name = "Robot_config.cfg";
+    Frame obj;
+    obj.reading_from_file(file_name);
+    obj.frame_loop();
 
-    while (getline(file_in, information))
-    {
-        cout << information;
-    }
-
-    file_in.close();
     return 0;
 }
