@@ -23,10 +23,11 @@ private:
     int current_line = 0;
     int size_line = 1;
     int step_line = 2;
-    int robots_line = 3;
+    int robots_numbers_line = 3;
 
 public:
     int step = 5;
+    int robot_numbers = 0;
     int Y_axis, X_axis = 0;
     Robot Obj;
 
@@ -45,10 +46,17 @@ public:
         {
 
             current_line++;
-            cout << information << endl;
             if (current_line == size_line)
             {
                 read_size_information(information);
+            }
+            else if (current_line == step_line)
+            {
+                read_step(information);
+            }
+            else if (current_line == robots_numbers_line)
+            {
+                read_robot_numbers(information);
             }
         }
     }
@@ -66,18 +74,16 @@ public:
             ss >> temp;
             if (stringstream(temp) >> found)
             {
-                if (loop_times == 1)
+                if (loop_times == 1) // using loop times to decide whether it's the first integer to read or second
+                                     // use to determine x and y axis
                 {
-                    cout << "Y-axis = " << found << endl;
                     Y_axis = found;
-                    cout << Y_axis << endl;
+                    cout << "Y-axis = " << Y_axis << endl;
                 }
                 else
                 {
-
-                    cout << "X-axis = " << found << endl;
                     X_axis = found;
-                    cout << X_axis << endl;
+                    cout << "X-axis = " << X_axis << endl;
                 }
                 loop_times++;
             }
@@ -86,12 +92,46 @@ public:
         }
     };
 
+    void read_step(string s)
+    {
+        stringstream ss;
+        ss << s;
+        string temp;
+        int found;
+        while (!ss.eof())
+        {
+            ss >> temp;
+            if (stringstream(temp) >> found)
+            {
+                step = found;
+                cout << "Steps = " << step << endl;
+            }
+        }
+    }
+
+    void read_robot_numbers(string s)
+    {
+        stringstream ss;
+        ss << s;
+        string temp;
+        int found;
+        while (!ss.eof())
+        {
+            ss >> temp;
+            if (stringstream(temp) >> found)
+            {
+                robot_numbers = found;
+                cout << "Robot numbers = " << robot_numbers << endl;
+            }
+        }
+    }
+
     void frame_loop()
     {
         for (int i = 0; i < step; i++)
         {
             cout << "Remaining step = :" << step << endl;
-            displayBattlefield(10, 10);
+            displayBattlefield(X_axis, Y_axis);
         };
     }
     void displayBattlefield(int row, int column)
