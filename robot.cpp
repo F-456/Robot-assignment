@@ -1,4 +1,4 @@
-#include "robot.h"
+#include "robot_function"
 #include <iostream>
 
 Robot::Robot(std::string name, int x, int y)

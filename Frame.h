@@ -14,6 +14,7 @@ Phone: 018-1234567
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "Robot function.h"
 using namespace std;
 
@@ -28,7 +29,10 @@ private:
 public:
     int step = 5;
     int robot_numbers = 0;
-    int Y_axis, X_axis = 0;
+    int Row_number, Column_number = 0;
+    vector<string> robot_namelist, robot_genre;
+    vector<int> robot_x_pos, robot_y_pos;
+
     Robot Obj;
 
     void reading_from_file(string file_name)
@@ -58,6 +62,10 @@ public:
             {
                 read_robot_numbers(information);
             }
+            else
+            {
+                read_robot_info(information);
+            }
         }
     }
 
@@ -77,13 +85,13 @@ public:
                 if (loop_times == 1) // using loop times to decide whether it's the first integer to read or second
                                      // use to determine x and y axis
                 {
-                    Y_axis = found;
-                    cout << "Y-axis = " << Y_axis << endl;
+                    Column_number = found;
+                    cout << "Column number = " << Column_number << endl;
                 }
                 else
                 {
-                    X_axis = found;
-                    cout << "X-axis = " << X_axis << endl;
+                    Row_number = found;
+                    cout << "Row number = " << Row_number << endl;
                 }
                 loop_times++;
             }
@@ -126,12 +134,61 @@ public:
         }
     }
 
+    void read_robot_info(string s)
+    {
+        stringstream ss;
+        ss << s;
+        string temp;
+        vector<string> temps;
+        while (!ss.eof())
+        {
+            ss >> temp;
+            temps.push_back(temp);
+        }
+        // debug loop for the vector string
+        // necessary for iterate througha a string vector
+        for (int i = 0; i < temps.size(); i++)
+        {
+            cout << temps[i] << endl;
+            if (i == 0)
+            {
+                robot_genre.push_back(temps[i]);
+            }
+            else if (i == 1)
+            {
+                robot_namelist.push_back(temps[i]);
+            }
+            else if (i == 2)
+            {
+                int temp2 = stoi(temps[i]); // converting string into i to be push back
+                robot_x_pos.push_back(temp2);
+            }
+            else
+            {
+                int temp2 = stoi(temps[i]);
+                robot_y_pos.push_back(temp2);
+            }
+            cout << "loop" << i << endl;
+        }
+    }
+
+    void check_robot_data()
+    {
+        for (int i = 0; i < robot_numbers; i++)
+        {
+            cout << "robot type = " << robot_genre[i] << ", ";
+            cout << "robot name = " << robot_namelist[i] << ", ";
+            cout << "robot x position = " << robot_x_pos[i] << ", ";
+            cout << "robot y position = " << robot_y_pos[i] << " " << endl;
+        }
+    }
+
     void frame_loop()
     {
         for (int i = 0; i < step; i++)
         {
             cout << "Remaining step = :" << step << endl;
-            displayBattlefield(X_axis, Y_axis);
+            displayBattlefield(Column_number, Row_number);
         };
     }
     void displayBattlefield(int row, int column)
