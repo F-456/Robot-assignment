@@ -28,9 +28,12 @@ private:
 
 public:
     int step = 5;
+    int x_value = 0;
+    int y_value = 0;
     int robot_numbers = 0;
-    int Row_number, Column_number = 0;
-    vector<string> robot_namelist, robot_genre;
+    int Row_number = 0, Column_number = 0;
+
+    vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
     vector<int> robot_x_pos, robot_y_pos;
 
     Robot Obj;
@@ -46,7 +49,7 @@ public:
             cout << "file opening error please check your file name again" << endl;
         }
 
-        while (getline(file_in, information))
+        while (getline(file_in, information)) // while getting line read the information from the config file into the program
         {
 
             current_line++;
@@ -86,12 +89,12 @@ public:
                                      // use to determine x and y axis
                 {
                     Column_number = found;
-                    cout << "Column number = " << Column_number << endl;
+                    // cout << "Column number = " << Column_number << endl;
                 }
                 else
                 {
                     Row_number = found;
-                    cout << "Row number = " << Row_number << endl;
+                    // cout << "Row number = " << Row_number << endl;
                 }
                 loop_times++;
             }
@@ -168,11 +171,11 @@ public:
                 int temp2 = stoi(temps[i]);
                 robot_y_pos.push_back(temp2);
             }
-            cout << "loop" << i << endl;
+            // cout << "loop" << i << endl;
         }
     }
 
-    void check_robot_data()
+    void check_robot_data() // debug functionf for checking the program data including all the robot info
     {
         for (int i = 0; i < robot_numbers; i++)
         {
@@ -183,32 +186,71 @@ public:
         }
     }
 
-    void frame_loop()
+    void debug()
+    {
+        cout << "debugging " << endl;
+        cout << Column_number << Row_number << endl;
+    }
+};
+
+class display_class : public Frame // derived display class from the frame
+{
+public:
+    void frame_loop() // main frame loop for the program
     {
         for (int i = 0; i < step; i++)
         {
+            for (int x = 0; x < robot_numbers + 1; x++)
+            {
+                cout << " now is " << x << " turns" << endl;
+                cout << "Press Enter to Continue";
+                cin.ignore();
+                y_value = 0;
+            }
             cout << "Remaining step = :" << step << endl;
-            displayBattlefield(Column_number, Row_number);
+            displayBattlefield();
         };
     }
-    void displayBattlefield(int row, int column)
+    void displayBattlefield()
     {
+        int row = Row_number;
+        int column = Column_number;
 
-        for (int i = 0; i <= row * 2; ++i)
+        cout << "row" << row << endl;
+        for (int y = 0; y <= column * 2; ++y)
         {
-            for (int j = 0; j <= column * 2; ++j)
+            if (y % 2 == 0)
             {
-                if (i % 2 == 0)
+                y_value++;
+            }
+            for (int x = 0; x <= row * 2; ++x)
+            {
+
+                if (y == 0 && x % 2 != 0)
                 {
-                    if (j % 2 == 0)
+                    cout << " " << (x / 2) + 1 << " ";
+                }
+                else if (y % 2 == 0)
+                {
+                    if (x % 2 == 0 && y != 0)
                         cout << "+";
-                    else
+                    else if (y != 0)
+                    {
                         cout << "--";
+                    }
                 }
                 else
                 {
-                    if (j % 2 == 0)
-                        cout << "|";
+                    if (x % 2 == 0)
+                    {
+
+                        if (x == 0)
+                            cout << y_value;
+
+                        else
+                            cout << "|";
+                    }
+
                     else
                         cout << "  ";
                 }
