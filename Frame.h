@@ -219,10 +219,12 @@ public:
         cout << "row" << row << endl;
         for (int y = 0; y <= column * 2; ++y)
         {
-            if (y % 2 == 0)
+            if (y % 2 != 0)
             {
                 y_value++;
+                x_value = 0; // resetting x value in each row
             }
+
             for (int x = 0; x <= row * 2; ++x)
             {
 
@@ -230,7 +232,7 @@ public:
                 {
                     cout << " " << (x / 2) + 1 << " ";
                 }
-                else if (y % 2 == 0)
+                else if (y % 2 == 0) // if the y axis is even nujmber
                 {
                     if (x % 2 == 0 && y != 0)
                         cout << "+";
@@ -239,23 +241,57 @@ public:
                         cout << "--";
                     }
                 }
-                else
+                else // if the y axis is odd number
                 {
                     if (x % 2 == 0)
                     {
-
                         if (x == 0)
                             cout << y_value;
 
                         else
+                        {
                             cout << "|";
+                            x_value++;
+                            // cout << " x_value = " << x_value;
+                        }
                     }
 
                     else
-                        cout << "  ";
+                        check_robot_position();
                 }
             }
             cout << endl;
         }
+    }
+
+    void check_robot_position() // function to check if the robot is in the slot
+    {
+        if (check_robot_y())
+        {
+        }
+        else
+            cout << "  "; // a slot for holding the robot places
+    }
+    bool check_robot_y()
+    {
+        for (int i = 0; i < Row_number; i++)
+        {
+            if (y_value == robot_y_pos[i])
+            {
+                check_robot_x(i);
+            }
+        }
+        return false;
+    }
+    bool check_robot_x(int i) // passing the i value from the previous function as a parameter
+                              //  for faster navigating and more straight forward solution
+    {
+        if (robot_x_pos[i] - 1 == x_value)
+        {
+            x_value++;
+            cout << "robot position = " << x_value << "," << y_value;
+            return true;
+        }
+        return false;
     }
 };
