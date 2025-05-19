@@ -286,12 +286,17 @@ public:
     bool check_robot_x(int i) // passing the i value from the previous function as a parameter
                               //  for faster navigating and more straight forward solution
     {
-        if (robot_x_pos[i] - 1 == x_value)
+        if (robot_x_pos[i] - 1 == x_value) // a robot is found on the position
         {
             x_value++;
-            cout << "robot position = " << x_value << "," << y_value;
+            print_robot_name(i);
             return true;
         }
         return false;
+    }
+
+    void print_robot_name(int i)
+    {
+        cout << robot_namelist[i];
     }
 };
