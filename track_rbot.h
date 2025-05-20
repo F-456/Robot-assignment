@@ -14,7 +14,6 @@ Phone: 018-1234567
 #define TRACK_ROBOT_H
 
 #include "robot.h"
-#include "frame.h"
 #include "reentry.h"
 
 class TrackBot : public SeeingRobot

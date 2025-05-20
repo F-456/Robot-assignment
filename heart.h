@@ -20,11 +20,22 @@ private:
     int y;
 
 public:
-    Heart(int xPos, int yPos);
+    Heart(int xPos, int yPos) : x(xPos), y(yPos) {}
 
-    int getX() const;
-    int getY() const;
-    bool isAtPosition(int xPos, int yPos) const;
+    int getX() const
+    {
+        return x;
+    }
+
+    int getY() const
+    {
+        return y;
+    }
+
+    bool isAtPosition(int xPos, int yPos) const
+    {
+        return x == xPos && y == yPos;
+    }
 };
 
 #endif

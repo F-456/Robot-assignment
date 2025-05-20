@@ -14,7 +14,6 @@ Phone: 018-1234567
 #define HIDE_ROBOT_H
 
 #include "robot.h"
-#include "frame.h"
 #include "reentry.h"
 
 class HideBot : public MovingRobot

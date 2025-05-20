@@ -1,5 +1,5 @@
 /**********|**********|**********|
-Program: YOUR_FILENAME.cpp / YOUR_FILENAME.h
+Program: robot.h
 Course: Data Structures and Algorithms
 Trimester: 2410
 Name: Frank Carrano
@@ -16,10 +16,8 @@ Phone: 018-1234567
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "frame.h"
 
-// forward dec for Grid and ReentryQueue
-class Grid;
+// Forward declaration only for ReentryQueue
 class ReentryQueue;
 
 using namespace std;
@@ -33,18 +31,16 @@ public:
     virtual int getX() const = 0;
     virtual int getY() const = 0;
     virtual int getKillCount() const = 0;
-    virtual void increaseKillCount(Grid &grid) = 0;
+    virtual void increaseKillCount() = 0;
     virtual int getLives() const = 0;
-    virtual void decreaseLives(Grid &grid, ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
+    virtual void decreaseLives(ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
     virtual bool isAlive() const = 0;
-    virtual void upgrade(Grid &grid, ofstream &outputFile) = 0;
-    virtual void increaseLives(Grid &grid) = 0;
 };
 
 class MovingRobot : virtual public Robot
 {
 public:
-    virtual void move(Grid &grid, ofstream &outputFile) = 0;
+    virtual void move(ofstream &outputFile) = 0;
     virtual void setPosition(int newX, int newY) = 0;
     virtual bool hasMoved() const = 0;
     virtual void setMoved(bool moved) = 0;
@@ -53,7 +49,7 @@ public:
 class ShootingRobot : virtual public Robot
 {
 public:
-    virtual void fire(Grid &grid, ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
+    virtual void fire(ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
     virtual bool hasFired() const = 0;
     virtual void setFired(bool fired) = 0;
 };
@@ -61,7 +57,7 @@ public:
 class SeeingRobot : virtual public Robot
 {
 public:
-    virtual void look(Grid &grid, int &targetX, int &targetY, bool &targetFound) = 0;
+    virtual void look(int &targetX, int &targetY, bool &targetFound) = 0;
 };
 
 #endif

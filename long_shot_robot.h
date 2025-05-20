@@ -1,48 +1,95 @@
-/**********|**********|**********|
-Program: YOUR_FILENAME.cpp / YOUR_FILENAME.h
-Course: Data Structures and Algorithms
-Trimester: 2410
-Name: Frank Carrano
-ID: 1071001234
-Lecture Section: TC101
-Tutorial Section: TT1L
-Email: abc123@yourmail.com
-Phone: 018-1234567
-**********|**********|**********/
-
 #ifndef LONG_SHOT_ROBOT_H
 #define LONG_SHOT_ROBOT_H
 
 #include "robot.h"
-#include "frame.h"
-#include "reentry.h"
+#include "reentry_queue.h"
+#include <string>
+#include <fstream>
+using namespace std;
 
 class LongShotBot : public ShootingRobot
 {
 private:
-    string robotName;
-    int x;
-    int y;
+    string name;
+    int x, y;
     int killCount;
     int lives;
     bool fired;
 
 public:
-    LongShotBot(const string &name, int xPos, int yPos);
+    LongShotBot(string name, int x, int y)
+        : name(name), x(x), y(y), killCount(0), lives(3), fired(false) {}
 
-    string getType() const override;
-    string getRobotName() const override;
-    int getX() const override;
-    int getY() const override;
-    int getKillCount() const override;
-    void increaseKillCount(Grid &grid) override;
-    int getLives() const override;
-    void decreaseLives(Grid &grid, ReentryQueue &reentryQueue, ofstream &outputFile) override;
-    void increaseLives(Grid &grid) override;
-    bool isAlive() const override;
-    void fire(Grid &grid, ReentryQueue &reentryQueue, ofstream &outputFile) override;
-    bool hasFired() const override;
-    void setFired(bool fired) override;
+    string getType() const override
+    {
+        return "LongShotBot";
+    }
+
+    string getRobotName() const override
+    {
+        return name;
+    }
+
+    int getX() const override
+    {
+        return x;
+    }
+
+    int getY() const override
+    {
+        return y;
+    }
+
+    int getKillCount() const override
+    {
+        return killCount;
+    }
+
+    void increaseKillCount() override
+    {
+        killCount++;
+    }
+
+    int getLives() const override
+    {
+        return lives;
+    }
+
+    void increaseLives() override
+    {
+        lives++;
+    }
+
+    void decreaseLives(ReentryQueue &reentryQueue, ofstream &outputFile) override
+    {
+        lives--;
+        outputFile << name << " lost a life! Remaining lives: " << lives << endl;
+        if (lives > 0)
+        {
+            reentryQueue.queue(this); // this is now valid since we inherit Robot
+        }
+    }
+
+    bool isAlive() const override
+    {
+        return lives > 0;
+    }
+
+    void fire(ReentryQueue &reentryQueue, ofstream &outputFile) override
+    {
+        fired = true;
+        outputFile << name << " fired a long-range shot!" << endl;
+    }
+
+    bool hasFired() const override
+    {
+        return fired;
+    }
+
+    void setFired(bool f) override
+    {
+        fired = f;
+    }
 };
 
 #endif
