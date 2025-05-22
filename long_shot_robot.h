@@ -5,24 +5,34 @@
 #include "reentry_queue.h"
 #include <string>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-class LongShotBot : public ShootingRobot
+void initRandom()
+{
+    srand(static_cast<unsigned int>(time(nullptr)));
+}
+
+class LongShotBot : public ShootingRobot, public MovingRobot
 {
 private:
     string name;
     int x, y;
     int killCount;
     int lives;
+    bool moved;
     bool fired;
 
 public:
     LongShotBot(string name, int x, int y)
-        : name(name), x(x), y(y), killCount(0), lives(3), fired(false) {}
+        : name(name), x(x), y(y), killCount(0), lives(3), moved(false), fired(false) {}
+
+    virtual ~LongShotBot() {}
 
     string getType() const override
     {
-        return "LongShotBot";
+        return "L";
     }
 
     string getRobotName() const override
@@ -90,6 +100,19 @@ public:
     {
         fired = f;
     }
-};
 
+    bool
+    isInRange(int targetX, int targetY) const
+    {
+        int dx = abs(targetX - x);
+        int dy = abs(targetY - y);
+        return (dx + dy) <= 3;
+    }
+
+    void setPosition(int newX, int newY)
+    {
+        x = newX;
+        y = newY;
+    }
+};
 #endif

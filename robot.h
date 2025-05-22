@@ -17,47 +17,108 @@ Phone: 018-1234567
 #include <string>
 #include <fstream>
 
-// Forward declaration only for ReentryQueue
-class ReentryQueue;
-
 using namespace std;
+
+// Forward declaration only for ReentryQueue
+class Frame;
+class ReentryQueue;
 
 class Robot
 {
+protected:
+    string name;
+    int x = 0, y = 0;
+    int killCount = 0;
+    int lives = 3;
+
 public:
     virtual ~Robot() {}
-    virtual string getType() const = 0;
-    virtual string getRobotName() const = 0;
-    virtual int getX() const = 0;
-    virtual int getY() const = 0;
-    virtual int getKillCount() const = 0;
-    virtual void increaseKillCount() = 0;
-    virtual int getLives() const = 0;
-    virtual void decreaseLives(ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
-    virtual bool isAlive() const = 0;
+    virtual string getType() const { return "Generic"; }
+    virtual string getRobotName() const { return name; }
+    virtual int getX() const { return x; }
+    virtual int getY() const { return y; }
+    virtual int getKillCount() const { return killCount; }
+    virtual void increaseKillCount() { killCount++; }
+    virtual int getLives() const { return lives; }
+    virtual void decreaseLives(ReentryQueue &reentryQueue, ofstream &outputFile)
+    {
+        lives--;
+        outputFile << name << " lost a life! Remaining lives: " << lives << endl;
+    }
+    virtual bool isAlive() const { return lives > 0; }
 };
 
-class MovingRobot : virtual public Robot
+class MovingRobot : public Robot
 {
+protected:
+    bool moved = false;
+
 public:
-    virtual void move(ofstream &outputFile) = 0;
-    virtual void setPosition(int newX, int newY) = 0;
-    virtual bool hasMoved() const = 0;
-    virtual void setMoved(bool moved) = 0;
+    void move(int &x, int &y, int maxX, int maxY)
+    {
+        int direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
+        cout << "Random direction = " << direction << endl;
+
+        switch (direction)
+        {
+        case 0:
+            cout << "Moving up\n";
+            if (y > 0)
+                y--;
+            break;
+        case 1:
+            cout << "Moving down\n";
+            if (y < maxY - 1)
+                y++;
+            break;
+        case 2:
+            cout << "Moving left\n";
+            if (x > 0)
+                x--;
+            break;
+        case 3:
+            cout << "Moving right\n";
+            if (x < maxX - 1)
+                x++;
+            break;
+        }
+    }
 };
 
-class ShootingRobot : virtual public Robot
+class ShootingRobot : public Robot
 {
+protected:
+    bool fired = false;
+
 public:
-    virtual void fire(ReentryQueue &reentryQueue, ofstream &outputFile) = 0;
-    virtual bool hasFired() const = 0;
-    virtual void setFired(bool fired) = 0;
+    virtual void fire(ReentryQueue &reentryQueue, ofstream &outputFile)
+    {
+        // Default behavior: log firing
+        outputFile << name << " fired a basic shot!" << endl;
+        fired = true;
+    }
+
+    virtual bool hasFired() const
+    {
+        return fired;
+    }
+
+    virtual void setFired(bool f)
+    {
+        fired = f;
+    }
 };
 
-class SeeingRobot : virtual public Robot
+class SeeingRobot : public Robot
 {
 public:
-    virtual void look(int &targetX, int &targetY, bool &targetFound) = 0;
+    virtual void look(int &targetX, int &targetY, bool &targetFound)
+    {
+        // Default behavior: no target found
+        targetFound = false;
+        targetX = -1;
+        targetY = -1;
+    }
 };
 
 #endif

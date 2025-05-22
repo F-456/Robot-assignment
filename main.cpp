@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+#include <ctime>
 #include "robot.h"
 #include "Frame.h"
 
@@ -17,6 +19,8 @@ int main()
     display.frame_loop();
     // for debug purposes only
     display.check_robot_data();
+
+    srand(static_cast<unsigned>(time(0)));
 
     return 0;
 }
