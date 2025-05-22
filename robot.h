@@ -19,33 +19,19 @@ Phone: 018-1234567
 
 using namespace std;
 
-// Forward declaration only for ReentryQueue
-class Frame;
-class ReentryQueue;
-
 class Robot
 {
-protected:
-    string name;
-    int x = 0, y = 0;
-    int killCount = 0;
-    int lives = 3;
-
 public:
-    virtual ~Robot() {}
-    virtual string getType() const { return "Generic"; }
-    virtual string getRobotName() const { return name; }
-    virtual int getX() const { return x; }
-    virtual int getY() const { return y; }
-    virtual int getKillCount() const { return killCount; }
-    virtual void increaseKillCount() { killCount++; }
-    virtual int getLives() const { return lives; }
-    virtual void decreaseLives(ReentryQueue &reentryQueue, ofstream &outputFile)
+    void Random_action()
     {
-        lives--;
-        outputFile << name << " lost a life! Remaining lives: " << lives << endl;
     }
-    virtual bool isAlive() const { return lives > 0; }
+};
+class ThinkingRobot : public Robot
+{
+public:
+    void Thinking()
+    {
+    }
 };
 
 class MovingRobot : public Robot
@@ -91,21 +77,13 @@ protected:
     bool fired = false;
 
 public:
-    virtual void fire(ReentryQueue &reentryQueue, ofstream &outputFile)
+    virtual void fire()
     {
-        // Default behavior: log firing
-        outputFile << name << " fired a basic shot!" << endl;
-        fired = true;
     }
 
-    virtual bool hasFired() const
+    virtual bool hasFired()
     {
         return fired;
-    }
-
-    virtual void setFired(bool f)
-    {
-        fired = f;
     }
 };
 
