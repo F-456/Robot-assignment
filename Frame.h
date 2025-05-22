@@ -18,7 +18,6 @@ Phone: 018-1234567
 #include "Robot.h"
 using namespace std;
 
-MovingRobot Robot;
 class Frame
 {
 private:
@@ -29,13 +28,14 @@ private:
 
 public:
     int step = 5;
-    int x_value = 0;
+    float x_value = 0;
     int y_value = 0;
     int robot_numbers = 0;
+    int slot_occupied = 0;
     int Row_number = 0, Column_number = 0;
 
     vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
-    vector<int> robot_x_pos, robot_y_pos;
+    vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_heart, robot_ammo;
 
     void reading_from_file(string file_name)
     {
@@ -151,7 +151,7 @@ public:
         // necessary for iterate througha a string vector
         for (int i = 0; i < temps.size(); i++)
         {
-            cout << temps[i] << endl;
+            // cout << temps[i] << endl;
             if (i == 0)
             {
                 robot_genre.push_back(temps[i]);
@@ -170,7 +170,6 @@ public:
                 int temp2 = stoi(temps[i]);
                 robot_y_pos.push_back(temp2);
             }
-            // cout << "loop" << i << endl;
         }
     }
 
@@ -195,32 +194,64 @@ public:
 class display_class : public Frame // derived display class from the frame
 {
 public:
+    void dice(int turn)
+    {
+        ThinkingRobot robot_think;
+        MovingRobot robot_move;
+        SeeingRobot robot_see;
+        ShootingRobot robot_shoot;
+        srand(time(0));
+        int random_number = rand() % 5;
+        cout << "random number is" << random_number << endl;
+        if (random_number == 0)
+        {
+            robot_think.think(robot_namelist[turn]);
+        }
+        else if (random_number == 1)
+        {
+            robot_move.move(robot_namelist[turn], robot_x_pos[turn], robot_y_pos[turn]);
+        }
+        else if (random_number == 2)
+        {
+            robot_shoot.shoot(robot_namelist[turn]);
+        }
+        else
+        {
+            robot_see.see(robot_namelist[turn]);
+        }
+    }
     void frame_loop() // main frame loop for the program
     {
+        displayBattlefield();
         for (int i = 0; i < step; i++)
         {
-            for (int x = 0; x < robot_numbers + 1; x++)
+            for (int x = 0; x < robot_numbers; x++)
             {
-                cout << " now is " << x << " turns" << endl;
+                cout << " now is turn " << x << endl;
                 cout << "Press Enter to Continue";
                 cin.ignore();
-                if (x == 1)
-                {
-                    Robot.move(robot_x_pos[x - 1], robot_y_pos[x - 1], Column_number, Row_number);
-                    cout << "Robot now are " << robot_x_pos[x - 1] << "and" << robot_x_pos[x] << endl;
-                }
+                dice(x);
                 y_value = 0;
             }
             cout << "Remaining step = :" << step << endl;
             displayBattlefield();
         };
     }
+    void value_initialize()
+    {
+        for (int i = 0; i < robot_numbers; i++)
+        {
+            robot_looked.push_back(0);
+            robot_ammo.push_back(8);
+            robot_heart.push_back(3);
+        }
+    }
+
     void displayBattlefield()
     {
         int row = Row_number;
         int column = Column_number;
 
-        cout << "row" << row << endl;
         for (int y = 0; y <= column * 2; ++y)
         {
             if (y % 2 != 0)
@@ -236,7 +267,7 @@ public:
                 {
                     cout << " " << (x / 2) + 1 << " ";
                 }
-                else if (y % 2 == 0) // if the y axis is even nujmber
+                else if (y % 2 == 0) // if the y axis is even number
                 {
                     if (x % 2 == 0 && y != 0)
                         cout << "+";
@@ -249,32 +280,34 @@ public:
                 {
                     if (x % 2 == 0)
                     {
+                        x_value++;
                         if (x == 0)
+                        {
                             cout << y_value;
-
+                        }
                         else
                         {
                             cout << "|";
-                            x_value++;
-                            // cout << " x_value = " << x_value;
+                            slot_occupied = 0;
                         }
                     }
 
                     else
+                    {
                         check_robot_position();
+                    }
                 }
             }
             cout << endl;
         }
     }
-
     void check_robot_position() // function to check if the robot is in the slot
     {
         if (check_robot_y())
         {
         }
-        else
-            cout << "  "; // a slot for holding the robot places
+        else if (slot_occupied == 0) // the slot does not have any robot
+            cout << "  ";            // slot for holding the robot places
     }
     bool check_robot_y()
     {
@@ -290,17 +323,23 @@ public:
     bool check_robot_x(int i) // passing the i value from the previous function as a parameter
                               //  for faster navigating and more straight forward solution
     {
-        if (robot_x_pos[i] - 1 == x_value) // a robot is found on the position
+        if (x_value == robot_x_pos[i]) // a robot is found on the position
         {
-            x_value++;
+            slot_occupied = 1;
             print_robot_name(i);
+
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
-
     void print_robot_name(int i)
     {
-        cout << robot_namelist[i];
+        if (robot_namelist[i].length() >= 2) // print only the first two character of the robot name
+        {
+            cout << robot_namelist[i].substr(0, 2);
+        }
     }
 };
