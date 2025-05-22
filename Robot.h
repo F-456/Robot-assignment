@@ -10,93 +10,101 @@ Email: abc123@yourmail.com
 Phone: 018-1234567
 **********|**********|**********/
 
-#ifndef ROBOT_H
-#define ROBOT_H
-
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
-class Robot
+class Robot // abstract base class
+            // doesn't exist until to be derived
 {
+
 public:
-    void Random_action()
-    {
-    }
+    int turn = 0;
+    int random_number = 0;
+    virtual void think(string robot_name) const = 0;
+    virtual void move(string robot_name, int x, int y) const = 0;
+    virtual void shoot(string robot_name) const = 0;
+    virtual void see(string robot_name) const = 0;
+    virtual ~Robot() {}; // virtual destructor
 };
 class ThinkingRobot : public Robot
 {
 public:
-    void Thinking()
+    virtual void think(string robot_name) const
     {
+        cout << robot_name << " is thinking what to do next" << endl;
     }
+    virtual void move(string robot_name, int x, int y) const {};
+    virtual void shoot(string robot_name) const {};
+    virtual void see(string robot_name) const {};
 };
 
 class MovingRobot : public Robot
 {
-protected:
-    bool moved = false;
 
 public:
-    void move(int &x, int &y, int maxX, int maxY)
+    virtual void move(string robot_name, int x, int y) const
     {
-        int direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
-        cout << "Random direction = " << direction << endl;
-
-        switch (direction)
-        {
-        case 0:
-            cout << "Moving up\n";
-            if (y > 0)
-                y--;
-            break;
-        case 1:
-            cout << "Moving down\n";
-            if (y < maxY - 1)
-                y++;
-            break;
-        case 2:
-            cout << "Moving left\n";
-            if (x > 0)
-                x--;
-            break;
-        case 3:
-            cout << "Moving right\n";
-            if (x < maxX - 1)
-                x++;
-            break;
-        }
+        cout << robot_name << " is moving now" << endl;
     }
+    virtual void think(string robot_name) const {};
+    virtual void shoot(string robot_name) const {};
+    virtual void see(string robot_name) const {};
 };
 
 class ShootingRobot : public Robot
 {
-protected:
-    bool fired = false;
 
 public:
-    virtual void fire()
+    virtual void shoot(string robot_name) const
     {
+        cout << robot_name << " is shooting " << endl;
     }
-
-    virtual bool hasFired()
-    {
-        return fired;
-    }
+    virtual void move(string robot_name, int x, int y) const {};
+    virtual void think(string robot_name) const {};
+    virtual void see(string robot_name) const {};
 };
 
 class SeeingRobot : public Robot
 {
 public:
-    virtual void look(int &targetX, int &targetY, bool &targetFound)
+    virtual void see(string robot_name) const
     {
-        // Default behavior: no target found
-        targetFound = false;
-        targetX = -1;
-        targetY = -1;
+        cout << robot_name << " is seeing now " << endl;
     }
+    virtual void move(string robot_name, int x, int y) const {};
+    virtual void shoot(string robot_name) const {};
+    virtual void think(string robot_name) const {};
 };
 
-#endif
+// multiple inheritance of a robot type to do all the action
+class GenericBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+
+public:
+};
+class HideBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+class ThirtyShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+class ScoutBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
+
+class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+};
