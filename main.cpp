@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cstdlib>
-#include <ctime>
+#include "Robot.h"
 #include "Frame.h"
 
 using namespace std;
@@ -17,7 +16,7 @@ int main()
     display.debug();
     display.frame_loop();
     // for debug purposes only
-    display.check_robot_data();
+    // obj.check_robot_data();
 
     return 0;
 }

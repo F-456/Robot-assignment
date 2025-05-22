@@ -15,9 +15,10 @@ Phone: 018-1234567
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include "Robot function.h"
+#include "Robot.h"
 using namespace std;
 
+MovingRobot Robot;
 class Frame
 {
 private:
@@ -35,8 +36,6 @@ public:
 
     vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
     vector<int> robot_x_pos, robot_y_pos;
-
-    Robot Obj;
 
     void reading_from_file(string file_name)
     {
@@ -205,6 +204,11 @@ public:
                 cout << " now is " << x << " turns" << endl;
                 cout << "Press Enter to Continue";
                 cin.ignore();
+                if (x == 1)
+                {
+                    Robot.move(robot_x_pos[x - 1], robot_y_pos[x - 1], Column_number, Row_number);
+                    cout << "Robot now are " << robot_x_pos[x - 1] << "and" << robot_x_pos[x] << endl;
+                }
                 y_value = 0;
             }
             cout << "Remaining step = :" << step << endl;
