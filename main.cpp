@@ -1,19 +1,9 @@
-/**********|**********|**********|
-Program: YOUR_FILENAME.cpp / YOUR_FILENAME.h
-Course: Data Structures and Algorithms
-Trimester: 2410
-Name: Frank Carrano
-ID: 1071001234
-Lecture Section: TC101
-Tutorial Section: TT1L
-Email: abc123@yourmail.com
-Phone: 018-1234567
-**********|**********|**********/
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "Frame.h"
+
 using namespace std;
-#include "function.h"
 
 void diaplayBattlefield(int row, int column){
     for(int i = 0; i<= row * 2; ++i){
@@ -55,13 +45,8 @@ class ThinkingRobot : public Robot
 };
 int main()
 {
-    system("cd");
-    string information;
-    Robot Obj;
-    ifstream file_in;
-    ofstream file_out("example");
-    file_in.open(Obj.file_name);
 
+<<<<<<< HEAD
     int m = 80;
     int n = 50;
 
@@ -78,7 +63,19 @@ int main()
     {
         cout << information << endl;
     }
+=======
+    string file_name = "Robot_config.cfg";
+    display_class display;
 
-    file_in.close();
+    display.reading_from_file(file_name);
+    // display.debug();
+    display.value_initialize(); // initializing all the required data for the robot
+    display.fetching_data();    // fetch data to the robot.h file
+    // main loop for the program
+    display.frame_loop();
+    // for debug purposes only
+    // display.check_robot_data();
+>>>>>>> main
+
     return 0;
 }
