@@ -20,6 +20,7 @@ using namespace std;
 
 class Frame
 {
+
 private:
     int current_line = 0;
     int size_line = 1;
@@ -37,6 +38,14 @@ public:
     vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
     vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_heart, robot_ammo;
 
+    void fetching_data() // fetching data to the robot header file
+    {
+        cout << "fetching data ... " << endl;
+        for (int i = 0; i < robot_numbers; i++)
+        {
+            robot_fetching_data(Row_number, Column_number, robot_number, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i], robot_looked[i], robot_heart[i], robot_ammo[i]);
+        }
+    }
     void reading_from_file(string file_name)
     {
         string information;
@@ -88,12 +97,12 @@ public:
                                      // use to determine x and y axis
                 {
                     Column_number = found;
-                    // cout << "Column number = " << Column_number << endl;
+                    cout << "Column number = " << Column_number << endl;
                 }
                 else
                 {
                     Row_number = found;
-                    // cout << "Row number = " << Row_number << endl;
+                    cout << "Row number = " << Row_number << endl;
                 }
                 loop_times++;
             }
@@ -173,7 +182,7 @@ public:
         }
     }
 
-    void check_robot_data() // debug functionf for checking the program data including all the robot info
+    void check_robot_data() // debug function for checking the program data including all the robot info
     {
         for (int i = 0; i < robot_numbers; i++)
         {
@@ -182,6 +191,7 @@ public:
             cout << "robot x position = " << robot_x_pos[i] << ", ";
             cout << "robot y position = " << robot_y_pos[i] << " " << endl;
         }
+        robot_data_debug();
     }
 
     void debug()
@@ -196,28 +206,29 @@ class display_class : public Frame // derived display class from the frame
 public:
     void dice(int turn)
     {
-        ThinkingRobot robot_think;
-        MovingRobot robot_move;
-        SeeingRobot robot_see;
-        ShootingRobot robot_shoot;
+        GenericBot normal_robot;
+        HideBot hide_robot;
+
         srand(time(0));
-        int random_number = rand() % 5;
-        cout << "random number is" << random_number << endl;
-        if (random_number == 0)
+        int random_number = (rand() % 4) + 1;
+        if (robot_genre[turn] == "GenericRobot")
         {
-            robot_think.think(robot_namelist[turn]);
-        }
-        else if (random_number == 1)
-        {
-            robot_move.move(robot_namelist[turn], robot_x_pos[turn], robot_y_pos[turn]);
-        }
-        else if (random_number == 2)
-        {
-            robot_shoot.shoot(robot_namelist[turn]);
-        }
-        else
-        {
-            robot_see.see(robot_namelist[turn]);
+            if (random_number == 0)
+            {
+                normal_robot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                normal_robot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                normal_robot.shoot(turn);
+            }
+            else
+            {
+                normal_robot.see(turn);
+            }
         }
     }
     void frame_loop() // main frame loop for the program
@@ -235,7 +246,11 @@ public:
             }
             cout << "Remaining step = :" << step << endl;
             displayBattlefield();
+            cout << endl;
         };
+    }
+    void type_checker(int x)
+    {
     }
     void value_initialize()
     {
