@@ -210,6 +210,7 @@ public:
         HideBot hide_robot;
 
         srand(time(0));
+        // int random_number = 4;
         int random_number = (rand() % 4) + 1;
         if (robot_genre[turn] == "GenericRobot")
         {
