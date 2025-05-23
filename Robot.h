@@ -19,7 +19,7 @@ Phone: 018-1234567
 using namespace std;
 
 int row_number, column_number = 0;
-int robot_number = 0;
+int robot_number = 4;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_heart, robot_ammo_left;
 
@@ -53,9 +53,12 @@ string search_loop(int x, int y) // search looping to be use in the algorithm
     cout << "searching for enemey...." << endl;
     for (int i = 0; i < robot_number; i++) // search loop
     {
+        // cout << " searching " << x << "and " << y << endl;
         if (robot_x_pos[i] == x && robot_y_pos[i] == y)
         {
+
             string target = robot_namelist[i];
+            cout << "robot " << robot_namelist[i] << " is found" << endl;
             return target;
         }
     }
