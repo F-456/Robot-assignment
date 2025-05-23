@@ -43,7 +43,7 @@ public:
         cout << "fetching data ... " << endl;
         for (int i = 0; i < robot_numbers; i++)
         {
-            robot_fetching_data(Row_number, Column_number, robot_number, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i], robot_looked[i], robot_heart[i], robot_ammo[i]);
+            robot_fetching_data(Row_number, Column_number, robot_numbers, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i], robot_looked[i], robot_heart[i], robot_ammo[i]);
         }
     }
     void reading_from_file(string file_name)
