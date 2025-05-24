@@ -95,7 +95,7 @@ string search_for_robot(int x0, int y0)
         cout << "target found: " << target << endl;
 
     return target;
-
+}
 bool move_robot_search(int x, int y)
 {
     for (int i = 0; i < robot_number; i++)
@@ -417,7 +417,6 @@ public:
     void shoot(int turn) const override
     {
 
-
         int list_position = 0;
 
         int random_number = rand() % 10;
@@ -439,7 +438,6 @@ public:
                 cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
                 robot_destroyed[list_position] = 1;
                 upgrade_robot(turn);
-
             }
             else
             {
