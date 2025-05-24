@@ -32,19 +32,20 @@ public:
     float x_value = 0;
     int y_value = 0;
     int robot_numbers = 0;
+    int remaining_step = 0;
     int slot_occupied = 0;
     int Row_number = 0, Column_number = 0;
     int remaining_round = 0;
 
     vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
-    vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_heart, robot_ammo;
+    vector<int> robot_x_pos, robot_y_pos;
 
     void fetching_data() // fetching data to the robot header file
     {
         cout << "fetching data ... " << endl;
         for (int i = 0; i < robot_numbers; i++)
         {
-            robot_fetching_data(Row_number, Column_number, robot_number, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i], robot_looked[i], robot_heart[i], robot_ammo[i]);
+            robot_fetching_data(Row_number, Column_number, robot_numbers, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i]);
         }
     }
     void reading_from_file(string file_name)
@@ -126,6 +127,7 @@ public:
                 step = found;
                 remaining_round = found - 1;
                 cout << "Steps = " << step << endl;
+                remaining_step = found;
             }
         }
     }
@@ -212,7 +214,7 @@ public:
         HideBot hide_robot;
 
         // int random_number = 4;
-        int random_number = (rand() % 4) + 1;
+        int random_number = (rand() % 4);
         if (robot_genre[turn] == "GenericRobot")
         {
             if (random_number == 0)
@@ -248,7 +250,9 @@ public:
                 dice(x);
                 y_value = 0;
             }
-            cout << "Remaining round = :" << remaining_round-- << endl;
+
+            remaining_step--;
+            cout << "Remaining step = :" << remaining_step << endl;
             displayBattlefield();
             cout << endl;
         };
@@ -260,10 +264,25 @@ public:
     {
         for (int i = 0; i < robot_numbers; i++)
         {
+            // value in robot header
             robot_looked.push_back(0);
-            robot_ammo.push_back(10);
-            robot_heart.push_back(3);
+            robot_ammo_left.push_back(10);
+            robot_lives.push_back(3);
+            robot_destroyed.push_back(0);
+            robot_move_upgraded.push_back(0);
+            robot_shoot_upgraded.push_back(0);
+            robot_see_upgraded.push_back(0);
+            Hidebot.push_back(0);
+            Jumpbot.push_back(0);
+            long_shot_bot.push_back(0);
+            semiauto_bot.push_back(0);
+            thirtyshot_bot.push_back(0);
+            scoutbot.push_back(0);
+            trackbot.push_back(0);
+
         }
+
+        cout << "data initialize completely " << endl;
     }
 
     void displayBattlefield()
