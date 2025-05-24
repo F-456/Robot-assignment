@@ -27,6 +27,7 @@ vector<int> Hidebot, Jumpbot, long_shot_bot, semiauto_bot, thirtyshot_bot, scout
 
 // fetching data from frame h and load it to this file
 void robot_fetching_data(int row, int column, int bot_number, string name, string genre, int x_pos, int y_pos)
+
 {
     cout << "data loading ..." << endl;
     row_number = row;
@@ -47,6 +48,9 @@ void robot_data_debug()
     }
 }
 
+void upgrade_robot() {
+
+};
 string search_loop(int x, int y) // search looping to be use in the algorithm
 {
     bool found;
@@ -91,7 +95,6 @@ string search_for_robot(int x0, int y0)
         cout << "target found: " << target << endl;
 
     return target;
-}
 
 bool move_robot_search(int x, int y)
 {
@@ -112,6 +115,7 @@ int search_hit_target(string name) // a function to find the position of target 
 {
     for (int i = 0; i < robot_number; i++)
     {
+
         if (robot_namelist[i] == name)
         {
             return i;
@@ -413,14 +417,15 @@ public:
     void shoot(int turn) const override
     {
 
+
         int list_position = 0;
+
         int random_number = rand() % 10;
         cout << robot_namelist[turn] << " is trying to shoot " << endl;
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
         // shoot algorithm for the robot
         string target = search_for_robot(x, y);
-
         if (!target.empty()) // shoot successfully
         {
             if (random_number < 7) // 70 % will hit
@@ -434,6 +439,7 @@ public:
                 cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
                 robot_destroyed[list_position] = 1;
                 upgrade_robot(turn);
+
             }
             else
             {

@@ -28,13 +28,14 @@ private:
     int robots_numbers_line = 3;
 
 public:
-    int step = 5;
+    int step = 0;
     float x_value = 0;
     int y_value = 0;
     int robot_numbers = 0;
     int remaining_step = 0;
     int slot_occupied = 0;
     int Row_number = 0, Column_number = 0;
+    int remaining_round = 0;
 
     vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
     vector<int> robot_x_pos, robot_y_pos;
@@ -97,13 +98,13 @@ public:
                 if (loop_times == 1) // using loop times to decide whether it's the first integer to read or second
                                      // use to determine x and y axis
                 {
-                    Column_number = found;
-                    cout << "Column number = " << Column_number << endl;
+                    Row_number = found;
+                    cout << "Row number = " << Row_number << endl;
                 }
                 else
                 {
-                    Row_number = found;
-                    cout << "Row number = " << Row_number << endl;
+                    Column_number = found;
+                    cout << "Column number = " << Column_number << endl;
                 }
                 loop_times++;
             }
@@ -124,6 +125,7 @@ public:
             if (stringstream(temp) >> found)
             {
                 step = found;
+                remaining_round = found - 1;
                 cout << "Steps = " << step << endl;
                 remaining_step = found;
             }
@@ -211,7 +213,6 @@ public:
         GenericBot normal_robot;
         HideBot hide_robot;
 
-        srand(time(0));
         // int random_number = 4;
         int random_number = (rand() % 4);
         if (robot_genre[turn] == "GenericRobot")
@@ -236,17 +237,20 @@ public:
     }
     void frame_loop() // main frame loop for the program
     {
+
         displayBattlefield();
         for (int i = 0; i < step; i++)
         {
             for (int x = 0; x < robot_numbers; x++)
             {
-                cout << " now is turn " << x << endl;
-                cout << "Press Enter to Continue";
+                cout << " now is turn " << x << endl
+                     << endl;
+                cout << "PRESS ENTER TO CONTINUE";
                 cin.ignore();
                 dice(x);
                 y_value = 0;
             }
+
             remaining_step--;
             cout << "Remaining step = :" << remaining_step << endl;
             displayBattlefield();
@@ -275,6 +279,7 @@ public:
             thirtyshot_bot.push_back(0);
             scoutbot.push_back(0);
             trackbot.push_back(0);
+
         }
 
         cout << "data initialize completely " << endl;
@@ -285,7 +290,7 @@ public:
         int row = Row_number;
         int column = Column_number;
 
-        for (int y = 0; y <= column * 2; ++y)
+        for (int y = 0; y <= row * 2; ++y)
         {
             if (y % 2 != 0)
             {
@@ -293,7 +298,7 @@ public:
                 x_value = 0; // resetting x value in each row
             }
 
-            for (int x = 0; x <= row * 2; ++x)
+            for (int x = 0; x <= column * 2; ++x)
             {
 
                 if (y == 0 && x % 2 != 0)
