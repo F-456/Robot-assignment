@@ -79,8 +79,6 @@ string search_for_robot(int x0, int y0)
     const int dy[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 
     string target;
-    target = search_loop(x, y);
-    target = search_loop(x, y);
     for (int direction = 0; direction < 8; ++direction)
     {
         int x = x0 + dx[direction];
