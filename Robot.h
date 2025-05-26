@@ -22,7 +22,7 @@ int row_number, column_number = 0;
 int robot_number = 0;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
-vector<int> robot_move_upgraded, robot_shoot_upgraded, robot_see_upgraded;
+vector<int> robot_upgraded;
 vector<int> Hidebot, Jumpbot, long_shot_bot, semiauto_bot, thirtyshot_bot, scoutbot, trackbot;
 
 // fetching data from frame h and load it to this file
@@ -48,9 +48,6 @@ void robot_data_debug()
     }
 }
 
-void upgrade_robot() {
-
-};
 string search_loop(int x, int y) // search looping to be use in the algorithm
 {
     bool found;
@@ -126,86 +123,31 @@ int search_hit_target(string name) // a function to find the position of target 
 
 void upgrade_robot(int turn)
 {
-
-    string upgrade_type = "";
-    bool can_upgrade = true;
-    bool loop_done = false;
-    bool move_bool, see_bool, shot_bool = false;
-
-    while (!loop_done)
-    {
-        int first_dice = rand() % 3; // dice 0 to 2
-        if (first_dice == 0 && robot_move_upgraded[turn] == 0)
+    if (robot_upgraded[turn] == 0)
+    { // the robot haven't upgraded
+        int dice_number = rand() % 7;
+        switch (dice_number)
         {
-            upgrade_type = "move";
-            loop_done = true;
-            move_bool = true;
+        case 0:
+            robot_genre[turn] = "HideBot";
+        case 1:
+            robot_genre[turn] = "JumpBot";
+        case 2:
+            robot_genre[turn] = "LongShotBot";
+        case 3:
+            robot_genre[turn] = "SemiAutoBot";
+        case 4:
+            robot_genre[turn] = "ThirtyShotBot";
+        case 5:
+            robot_genre[turn] = "ScoutBot";
+        case 6:
+            robot_genre[turn] = "TrackBot";
         }
-        else if (first_dice == 1 && robot_see_upgraded[turn] == 0)
-        {
-            upgrade_type = "see";
-            loop_done = true;
-            see_bool = true;
-        }
-        else if (first_dice == 2 && robot_shoot_upgraded[turn] == 0)
-        {
-            upgrade_type = " false";
-            loop_done = true;
-            shot_bool = true;
-        }
-        // every available upgrade type is done
-        // robot has upgrade 3 times
-        else if (robot_move_upgraded[turn] == 1 && robot_see_upgraded[turn] == 1 && robot_shoot_upgraded[turn] == 1)
-        {
-            cout << " This robot has no upgrade slot left" << endl;
-            loop_done = true;
-            can_upgrade = false;
-        }
-        else
-            loop_done = true;
+        cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
     }
-
-    if (loop_done && can_upgrade) // the robot is available for upgrade
-    {
-        int second_dice = rand() % 3;
-        cout << "robot is upgrading now " << endl;
-        if (second_dice == 0 && move_bool)
-        {
-            Jumpbot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a jump bot" << endl;
-        }
-        else if (second_dice > 0 && move_bool)
-        {
-            Hidebot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a hide bot" << endl;
-        }
-        else if (second_dice == 0 && shot_bool)
-        {
-            long_shot_bot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a long shot bot" << endl;
-        }
-        else if (second_dice == 1 && shot_bool)
-        {
-            semiauto_bot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a semi auto bot" << endl;
-        }
-        else if (second_dice == 2 && shot_bool)
-        {
-            thirtyshot_bot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a thirtyshot bot" << endl;
-        }
-        else if (second_dice == 0 && see_bool)
-        {
-            trackbot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a track bot" << endl;
-        }
-        else if (second_dice > 0 && see_bool)
-        {
-            scoutbot[turn] = 1;
-            cout << robot_namelist[turn] << " is upgrading to a scout bot" << endl;
-        }
-    }
-};
+    else
+        cout << " The robot has already upgraded " << endl;
+}
 
 class Robot // abstract base class
             // doesn't exist until to be derived
@@ -243,7 +185,7 @@ public:
             case 1:
                 if (move_robot_search(x, y - 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_y_pos[turn] - 1 > 0)
                 {
@@ -256,14 +198,14 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
                 }
                 break;
 
             case 2:
                 if (move_robot_search(x, y + 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_y_pos[turn] + 1 <= row_number)
                 {
@@ -276,13 +218,13 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
                 }
                 break;
             case 3:
                 if (move_robot_search(x - 1, y))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] - 1 > 0)
                 {
@@ -295,13 +237,13 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
                 }
                 break;
             case 4:
                 if (move_robot_search(x + 1, y))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] + 1 <= column_number)
                 {
@@ -314,13 +256,13 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
                 }
                 break;
             case 5:
                 if (move_robot_search(x + 1, y - 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] + 1 <= column_number && robot_y_pos[turn] - 1 > 0)
                 {
@@ -335,14 +277,14 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
                 }
                 break;
             case 6:
 
                 if (move_robot_search(x - 1, y - 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] - 1 > 0)
                 {
@@ -357,13 +299,13 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
                 }
                 break;
             case 7:
                 if (move_robot_search(x - 1, y + 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] + 1 <= row_number)
                 {
@@ -378,13 +320,13 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
                 }
                 break;
             case 8:
                 if (move_robot_search(x + 1, y + 1))
                 {
-                    cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
                 }
                 else if (robot_x_pos[turn] + 1 <= column_number && robot_y_pos[turn] + 1 <= row_number)
                 {
@@ -399,7 +341,7 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
+                    // cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
                 }
                 break;
             default:
@@ -431,7 +373,6 @@ public:
             {
                 cout << target << " is being shoot by " << robot_namelist[turn] << endl;
                 cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
-
                 list_position = search_hit_target(target);
                 robot_lives[list_position]--;
                 cout << target << " is destroyed " << endl;

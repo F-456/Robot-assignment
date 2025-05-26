@@ -269,9 +269,7 @@ public:
             robot_ammo_left.push_back(10);
             robot_lives.push_back(3);
             robot_destroyed.push_back(0);
-            robot_move_upgraded.push_back(0);
-            robot_shoot_upgraded.push_back(0);
-            robot_see_upgraded.push_back(0);
+            robot_upgraded.push_back(0);
             Hidebot.push_back(0);
             Jumpbot.push_back(0);
             long_shot_bot.push_back(0);
@@ -279,7 +277,6 @@ public:
             thirtyshot_bot.push_back(0);
             scoutbot.push_back(0);
             trackbot.push_back(0);
-
         }
 
         cout << "data initialize completely " << endl;
