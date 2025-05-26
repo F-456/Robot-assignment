@@ -23,9 +23,12 @@ int robot_number = 0;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
 vector<int> robot_upgraded;
-vector<int> Hidebot, Jumpbot, long_shot_bot, semiauto_bot, thirtyshot_bot, scoutbot, trackbot;
 
 // fetching data from frame h and load it to this file
+
+void random_telepor()
+{
+}
 void robot_fetching_data(int row, int column, int bot_number, string name, string genre, int x_pos, int y_pos)
 
 {
@@ -145,7 +148,7 @@ void upgrade_robot(int turn)
         }
         cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
     }
-    else
+    else // if the robot is not valid for upgrading
         cout << " The robot has already upgraded " << endl;
 }
 
@@ -414,12 +417,10 @@ class GenericBot : public ThinkingRobot,
 public:
     void think(int turn) const override
     {
-        cout << robot_namelist[turn] << " is thinking" << endl;
+        ThinkingRobot::think(turn);
     }
     void move(int turn, int &x, int &y) const override
     {
-        bool moved = false;
-
         MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
@@ -436,60 +437,150 @@ class HideBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, 
 public:
     void think(int turn) const override
     {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    };
+};
+
+// zh part
+class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+    void think(int turn) const override
+    {
         cout << robot_namelist[turn] << " is thinking" << endl;
     }
     void move(int turn, int &x, int &y) const override
     {
 
-        cout << "test moving " << endl;
+        MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
     {
-        cout << robot_namelist[turn] << " decides to shoot" << endl;
     }
     void see(int turn) const override
     {
         cout << "seeing now " << endl;
-    };
-    class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+    }
+};
+// Nicholas
+class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
     {
-    };
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
 
-    // zh part
-    class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
     {
-        void think(int turn) const override
-        {
-            cout << robot_namelist[turn] << " is thinking" << endl;
-        }
-        void move(int turn, int &x, int &y) const override
-        {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+// Nicholas
+class ThirtyShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
 
-            MovingRobot::move(turn, x, y);
-        }
-        void shoot(int turn) const override
-        {
-        }
-        void see(int turn) const override
-        {
-            cout << "seeing now " << endl;
-        }
-    };
-    // Nicholas
-    class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
     {
-    };
-    // Nicholas
-    class ThirtyShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
     {
-    };
+        SeeingRobot::see(turn);
+    }
+};
 
-    // zh part
-    class ScoutBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+// zh part
+class ScoutBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
     {
-    };
-    // Nicholas
-    class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
     {
-    };
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+// Nicholas
+class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
 };

@@ -210,7 +210,8 @@ class display_class : public Frame // derived display class from the frame
 public:
     void dice(int turn)
     {
-        GenericBot normal_robot;
+        GenericBot normal_robot; // constructor for different genre of robot
+        JumpBot Jump_Bot;
         HideBot hide_robot;
 
         // int random_number = 4;
@@ -232,6 +233,25 @@ public:
             else
             {
                 normal_robot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "JumpBot")
+        {
+            if (random_number == 0)
+            {
+                Jump_Bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Jump_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Jump_Bot.shoot(turn);
+            }
+            else
+            {
+                Jump_Bot.see(turn);
             }
         }
     }
@@ -270,13 +290,6 @@ public:
             robot_lives.push_back(3);
             robot_destroyed.push_back(0);
             robot_upgraded.push_back(0);
-            Hidebot.push_back(0);
-            Jumpbot.push_back(0);
-            long_shot_bot.push_back(0);
-            semiauto_bot.push_back(0);
-            thirtyshot_bot.push_back(0);
-            scoutbot.push_back(0);
-            trackbot.push_back(0);
         }
 
         cout << "data initialize completely " << endl;
