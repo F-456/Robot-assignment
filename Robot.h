@@ -117,7 +117,158 @@ class MovingRobot : virtual public Robot
 public:
     void move(int turn, int &x, int &y) const override
     {
-        cout << robot_namelist[turn] << " is moving now" << endl;
+        bool moved = false;
+
+        while (!moved)
+        {
+            srand(time(0));
+            int random_number = (rand() % 8) + 1;
+            switch (random_number)
+            {
+            case 1:
+                if (robot_y_pos[turn] - 1 > 0)
+                {
+
+                    cout << robot_namelist[turn] << " is moving up " << endl;
+                    moved = true;
+                    robot_y_pos[turn]--;
+                    y--;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+
+            case 2:
+                if (robot_y_pos[turn] + 1 < row_number)
+                {
+
+                    cout << robot_namelist[turn] << " is moving down " << endl;
+                    moved = true;
+                    robot_y_pos[turn]++;
+                    y++;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 3:
+                if (robot_x_pos[turn] - 1 > 0)
+                {
+
+                    cout << robot_namelist[turn] << " is moving left " << endl;
+                    moved = true;
+                    robot_x_pos[turn]--;
+                    x--;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 4:
+                if (robot_x_pos[turn] + 1 < column_number)
+                {
+
+                    cout << robot_namelist[turn] << " is moving right " << endl;
+                    moved = true;
+                    robot_x_pos[turn]++;
+                    x++;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 5:
+                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] - 1 > 0)
+                {
+
+                    cout << robot_namelist[turn] << " is moving up right " << endl;
+                    moved = true;
+                    robot_x_pos[turn]++;
+                    robot_y_pos[turn]--;
+                    x++;
+                    y--;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 6:
+                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] - 1 > 0)
+                {
+
+                    cout << robot_namelist[turn] << " is moving up left " << endl;
+                    moved = true;
+                    robot_x_pos[turn]--;
+                    robot_y_pos[turn]--;
+                    x--;
+                    y--;
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 7:
+                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] + 1 < row_number)
+                {
+
+                    cout << robot_namelist[turn] << " is moving down left " << endl;
+                    moved = true;
+                    robot_x_pos[turn]--;
+                    robot_y_pos[turn]++;
+                    x--;
+                    y++;
+
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            case 8:
+                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] + 1 < row_number)
+                {
+
+                    cout << robot_namelist[turn] << " is moving down right " << endl;
+                    moved = true;
+                    robot_x_pos[turn]++;
+                    robot_y_pos[turn]++;
+                    x++;
+                    y++;
+
+                    break;
+                }
+                else
+                {
+                    cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
+                    random_number--;
+                }
+                break;
+            default:
+                cout << "invalid movement " << endl;
+                break;
+            }
+        }
     }
 };
 
@@ -154,148 +305,7 @@ public:
     }
     void move(int turn, int &x, int &y) const override
     {
-        bool moved = false;
-
-        while (!moved)
-        {
-            srand(time(0));
-            int random_number = (rand() % 8) + 1;
-            switch (random_number)
-            {
-            case 1:
-                if (robot_y_pos[turn] - 1 > 0)
-                {
-
-                    cout << robot_namelist[turn] << " is moving up " << endl;
-                    moved = true;
-                    robot_y_pos[turn]--;
-                    y--;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
-                }
-                break;
-
-            case 2:
-                if (robot_y_pos[turn] + 1 < row_number)
-                {
-
-                    cout << robot_namelist[turn] << " is moving down " << endl;
-                    moved = true;
-                    robot_y_pos[turn]++;
-                    y++;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
-                }
-                break;
-            case 3:
-                if (robot_x_pos[turn] - 1 > 0)
-                {
-
-                    cout << robot_namelist[turn] << " is moving left " << endl;
-                    moved = true;
-                    robot_x_pos[turn]--;
-                    x--;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
-                }
-                break;
-            case 4:
-                if (robot_x_pos[turn] + 1 < column_number)
-                {
-
-                    cout << robot_namelist[turn] << " is moving right " << endl;
-                    moved = true;
-                    robot_x_pos[turn]++;
-                    x++;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
-                }
-                break;
-            case 5:
-                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] - 1 > 0)
-                {
-
-                    cout << robot_namelist[turn] << " is moving up right " << endl;
-                    moved = true;
-                    robot_x_pos[turn]++;
-                    robot_y_pos[turn]--;
-                    x++;
-                    y--;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
-                }
-                break;
-            case 6:
-                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] - 1 > 0)
-                {
-
-                    cout << robot_namelist[turn] << " is moving up left " << endl;
-                    moved = true;
-                    robot_x_pos[turn]--;
-                    robot_y_pos[turn]--;
-                    x--;
-                    y--;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
-                }
-                break;
-            case 7:
-                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] + 1 < row_number)
-                {
-
-                    cout << robot_namelist[turn] << " is moving down left " << endl;
-                    moved = true;
-                    robot_x_pos[turn]--;
-                    robot_y_pos[turn]++;
-                    x--;
-                    y++;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
-                }
-                break;
-            case 8:
-                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] + 1 < row_number)
-                {
-
-                    cout << robot_namelist[turn] << " is moving down right " << endl;
-                    moved = true;
-                    robot_x_pos[turn]++;
-                    robot_y_pos[turn]++;
-                    x++;
-                    y++;
-                    break;
-                }
-                else
-                {
-                    cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
-                }
-                break;
-            default:
-                cout << "invalid movement " << endl;
-                break;
-            }
-        }
+        MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
     {
