@@ -19,23 +19,27 @@ Phone: 018-1234567
 using namespace std;
 
 int row_number, column_number = 0;
-int robot_number = 4;
+int robot_number = 0;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
-vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_heart, robot_ammo_left;
+vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
+vector<int> robot_upgraded;
 
-void robot_fetching_data(int row, int column, int bot_number, string name, string genre, int x_pos, int y_pos, int robot_look, int robot_hp, int robot_ammo)
+// fetching data from frame h and load it to this file
+
+void random_telepor()
+{
+}
+void robot_fetching_data(int row, int column, int bot_number, string name, string genre, int x_pos, int y_pos)
+
 {
     cout << "data loading ..." << endl;
-    row_number = column;
-    column_number = row;
+    row_number = row;
+    column_number = column;
     robot_number = bot_number;
     robot_namelist.push_back(name);
     robot_genre.push_back(genre);
     robot_x_pos.push_back(x_pos);
     robot_y_pos.push_back(y_pos);
-    robot_looked.push_back(robot_look);
-    robot_heart.push_back(robot_hp);
-    robot_ammo_left.push_back(robot_ammo);
 }
 
 void robot_data_debug()
@@ -49,8 +53,8 @@ void robot_data_debug()
 
 string search_loop(int x, int y) // search looping to be use in the algorithm
 {
+    bool found;
     string target = "";
-    cout << "searching for enemey...." << endl;
     for (int i = 0; i < robot_number; i++) // search loop
     {
         // cout << " searching " << x << "and " << y << endl;
@@ -59,37 +63,93 @@ string search_loop(int x, int y) // search looping to be use in the algorithm
 
             string target = robot_namelist[i];
             cout << "robot " << robot_namelist[i] << " is found" << endl;
+            found = true;
             return target;
         }
     }
-    if (target.empty())
+    if (!found)
     {
-        cout << "no target is found" << endl;
         return "";
     }
 }
-string search_for_robot(int x, int y) // searching algorithm in look and shooting
+string search_for_robot(int x0, int y0)
 {
+    const int dx[8] = {0, 1, 1, 1, 0, -1, -1, -1}; // using const array to fix the search movement
+    const int dy[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 
     string target;
-    y--;
-    target = search_loop(x, y);
-    x++;
-    target = search_loop(x, y);
-    y++;
-    target = search_loop(x, y);
-    y++;
-    target = search_loop(x, y);
-    x--;
-    target = search_loop(x, y);
-    x--;
-    target = search_loop(x, y);
-    y--;
-    target = search_loop(x, y);
-    y--;
-    target = search_loop(x, y);
-    if (!target.empty())
-        return target;
+    for (int direction = 0; direction < 8; ++direction)
+    {
+        int x = x0 + dx[direction];
+        int y = y0 + dy[direction];
+        target = search_loop(x, y);
+        if (!target.empty())
+        {
+            break; // exit the loop if a target is found, target holds the name
+        }
+    }
+
+    if (target.empty())
+        cout << "No target is found in the range\n";
+    else
+        cout << "target found: " << target << endl;
+
+    return target;
+}
+bool move_robot_search(int x, int y)
+{
+    for (int i = 0; i < robot_number; i++)
+    {
+        // cout << robot_x_pos[i] << "| " << x << endl;
+        // cout << robot_y_pos[i] << "| " << y << endl;
+        if (robot_x_pos[i] == x && robot_y_pos[i] == y)
+
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+int search_hit_target(string name) // a function to find the position of target using the target name
+{
+    for (int i = 0; i < robot_number; i++)
+    {
+
+        if (robot_namelist[i] == name)
+        {
+            return i;
+        }
+    }
+    return 0;
+}
+
+void upgrade_robot(int turn)
+{
+    if (robot_upgraded[turn] == 0)
+    { // the robot haven't upgraded
+        int dice_number = rand() % 7;
+        switch (dice_number)
+        {
+        case 0:
+            robot_genre[turn] = "HideBot";
+        case 1:
+            robot_genre[turn] = "JumpBot";
+        case 2:
+            robot_genre[turn] = "LongShotBot";
+        case 3:
+            robot_genre[turn] = "SemiAutoBot";
+        case 4:
+            robot_genre[turn] = "ThirtyShotBot";
+        case 5:
+            robot_genre[turn] = "ScoutBot";
+        case 6:
+            robot_genre[turn] = "TrackBot";
+        }
+        cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
+    }
+    else // if the robot is not valid for upgrading
+        cout << " The robot has already upgraded " << endl;
 }
 
 class Robot // abstract base class
@@ -121,12 +181,15 @@ public:
 
         while (!moved)
         {
-            srand(time(0));
             int random_number = (rand() % 8) + 1;
             switch (random_number)
             {
             case 1:
-                if (robot_y_pos[turn] - 1 > 0)
+                if (move_robot_search(x, y - 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_y_pos[turn] - 1 > 0)
                 {
 
                     cout << robot_namelist[turn] << " is moving up " << endl;
@@ -137,13 +200,16 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving up but hit the wall " << endl;
                 }
                 break;
 
             case 2:
-                if (robot_y_pos[turn] + 1 < row_number)
+                if (move_robot_search(x, y + 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_y_pos[turn] + 1 <= row_number)
                 {
 
                     cout << robot_namelist[turn] << " is moving down " << endl;
@@ -154,12 +220,15 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving down but hit the wall " << endl;
                 }
                 break;
             case 3:
-                if (robot_x_pos[turn] - 1 > 0)
+                if (move_robot_search(x - 1, y))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] - 1 > 0)
                 {
 
                     cout << robot_namelist[turn] << " is moving left " << endl;
@@ -170,12 +239,15 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving left but hit the wall " << endl;
                 }
                 break;
             case 4:
-                if (robot_x_pos[turn] + 1 < column_number)
+                if (move_robot_search(x + 1, y))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] + 1 <= column_number)
                 {
 
                     cout << robot_namelist[turn] << " is moving right " << endl;
@@ -186,12 +258,15 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving right but hit the wall " << endl;
                 }
                 break;
             case 5:
-                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] - 1 > 0)
+                if (move_robot_search(x + 1, y - 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] + 1 <= column_number && robot_y_pos[turn] - 1 > 0)
                 {
 
                     cout << robot_namelist[turn] << " is moving up right " << endl;
@@ -204,12 +279,16 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving up right but hit the wall " << endl;
                 }
                 break;
             case 6:
-                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] - 1 > 0)
+
+                if (move_robot_search(x - 1, y - 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] - 1 > 0)
                 {
 
                     cout << robot_namelist[turn] << " is moving up left " << endl;
@@ -222,12 +301,15 @@ public:
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving up left but hit the wall " << endl;
                 }
                 break;
             case 7:
-                if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] + 1 < row_number)
+                if (move_robot_search(x - 1, y + 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] - 1 > 0 && robot_y_pos[turn] + 1 <= row_number)
                 {
 
                     cout << robot_namelist[turn] << " is moving down left " << endl;
@@ -236,17 +318,19 @@ public:
                     robot_y_pos[turn]++;
                     x--;
                     y++;
-
                     break;
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving down left but hit the wall " << endl;
                 }
                 break;
             case 8:
-                if (robot_x_pos[turn] + 1 < column_number && robot_y_pos[turn] + 1 < row_number)
+                if (move_robot_search(x + 1, y + 1))
+                {
+                    // cout << robot_namelist[turn] << " is trying to move into an occupied slot" << endl;
+                }
+                else if (robot_x_pos[turn] + 1 <= column_number && robot_y_pos[turn] + 1 <= row_number)
                 {
 
                     cout << robot_namelist[turn] << " is moving down right " << endl;
@@ -255,13 +339,11 @@ public:
                     robot_y_pos[turn]++;
                     x++;
                     y++;
-
                     break;
                 }
                 else
                 {
-                    cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
-                    random_number--;
+                    // cout << robot_namelist[turn] << " is moving down right but hit the wall " << endl;
                 }
                 break;
             default:
@@ -278,7 +360,37 @@ class ShootingRobot : virtual public Robot
 public:
     void shoot(int turn) const override
     {
-        cout << robot_namelist[turn] << " is shooting " << endl;
+
+        int list_position = 0;
+
+        int random_number = rand() % 10;
+        cout << robot_namelist[turn] << " is trying to shoot " << endl;
+        int x = robot_x_pos[turn];
+        int y = robot_y_pos[turn];
+        // shoot algorithm for the robot
+        string target = search_for_robot(x, y);
+        if (!target.empty()) // shoot successfully
+        {
+            if (random_number < 7) // 70 % will hit
+            {
+                cout << target << " is being shoot by " << robot_namelist[turn] << endl;
+                cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
+                list_position = search_hit_target(target);
+                robot_lives[list_position]--;
+                cout << target << " is destroyed " << endl;
+                cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
+                robot_destroyed[list_position] = 1;
+                upgrade_robot(turn);
+            }
+            else
+            {
+                cout << robot_namelist[turn] << " miss the shot " << endl;
+            }
+        }
+        else
+        {
+            cout << robot_namelist[turn] << " did not find someone to shoot " << endl;
+        }
     }
 };
 
@@ -288,6 +400,9 @@ public:
     void see(int turn) const override
     {
         cout << robot_namelist[turn] << " is seeing now " << endl;
+        int x = robot_x_pos[turn];
+        int y = robot_y_pos[turn];
+        search_for_robot(x, y);
     }
 };
 
@@ -301,7 +416,7 @@ class GenericBot : public ThinkingRobot,
 public:
     void think(int turn) const override
     {
-        cout << robot_namelist[turn] << " is thinking" << endl;
+        ThinkingRobot::think(turn);
     }
     void move(int turn, int &x, int &y) const override
     {
@@ -309,14 +424,11 @@ public:
     }
     void shoot(int turn) const override
     {
-        cout << robot_namelist[turn] << " decides to shoot" << endl;
+        ShootingRobot::shoot(turn);
     }
     void see(int turn) const override
     {
-        cout << robot_namelist[turn] << " is seeing now " << endl;
-        int x = robot_x_pos[turn];
-        int y = robot_y_pos[turn];
-        search_for_robot(x, y);
+        SeeingRobot::see(turn);
     }
 };
 class HideBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
@@ -324,38 +436,150 @@ class HideBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, 
 public:
     void think(int turn) const override
     {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    };
+};
+
+// zh part
+class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+    void think(int turn) const override
+    {
         cout << robot_namelist[turn] << " is thinking" << endl;
     }
     void move(int turn, int &x, int &y) const override
     {
 
-        cout << "test moving " << endl;
+        MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
     {
-        cout << robot_namelist[turn] << " decides to shoot" << endl;
     }
     void see(int turn) const override
     {
         cout << "seeing now " << endl;
-    };
-    class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+    }
+};
+// Nicholas
+class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
     {
-    };
-    class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
     {
-    };
-    class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
-    {
-    };
-    class ThirtyShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
-    {
-    };
-    class ScoutBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
-    {
-    };
 
-    class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
     {
-    };
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+// Nicholas
+class ThirtyShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+
+// zh part
+class ScoutBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+// Nicholas
+class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
 };

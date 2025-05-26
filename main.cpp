@@ -2,12 +2,13 @@
 #include <fstream>
 #include <sstream>
 #include "Frame.h"
+#include <ctime>
 
 using namespace std;
 
 int main()
 {
-
+    srand(time(0));
     string file_name = "Robot_config.cfg";
     ofstream file_out("Robot_Log.txt");
     file_out << "Robot 1 shooting" << endl;
@@ -17,6 +18,7 @@ int main()
     // display.debug();
     display.value_initialize(); // initializing all the required data for the robot
     display.fetching_data();    // fetch data to the robot.h file
+
     // main loop for the program
     display.frame_loop();
     // for debug purposes only
