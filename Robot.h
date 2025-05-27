@@ -24,7 +24,7 @@ int teleport_x_pos, teleport_y_pos;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
 vector<int> robot_upgraded;
-vector<int> jump_left;
+vector<int> jump_left, hide_left;
 
 // fetching data from frame h and load it to this file
 
@@ -408,9 +408,11 @@ public:
         list_position = search_hit_target(target);
         if (!target.empty()) // shoot successfully
         {
-            if (robot_genre[list_position] == "HideBot")
+            if (robot_genre[list_position] == "HideBot" && hide_left[list_position] > 0)
             {
                 cout << "Target " << robot_namelist[list_position] << " is hiding from the shoot" << endl;
+                hide_left[list_position]--;
+                cout << robot_namelist[list_position] << " have " << hide_left[list_position] << " times of hide left" << endl;
             }
             else if (random_number < 7) // 70 % will hit
             {

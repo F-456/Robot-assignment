@@ -428,6 +428,7 @@ public:
             robot_destroyed.push_back(0);
             robot_upgraded.push_back(0);
             jump_left.push_back(3);
+            hide_left.push_back(3);
         }
 
         cout << "data initialize completely " << endl;
