@@ -72,7 +72,7 @@ string search_loop(int x, int y) // search looping to be use in the algorithm
         return "";
     }
 }
-string search_for_robot(int x0, int y0)
+string search_for_robot(int x0, int y0, int range)
 {
     const int dx[8] = {0, 1, 1, 1, 0, -1, -1, -1}; // using const array to fix the search movement
     const int dy[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -368,7 +368,8 @@ public:
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
         // shoot algorithm for the robot
-        string target = search_for_robot(x, y);
+        int z = 3;
+        string target = search_for_robot(x, y, 1);
         if (!target.empty()) // shoot successfully
         {
             if (random_number < 7) // 70 % will hit
@@ -402,7 +403,7 @@ public:
         cout << robot_namelist[turn] << " is seeing now " << endl;
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
-        search_for_robot(x, y);
+        search_for_robot(x, y, 1);
     }
 };
 
@@ -443,10 +444,12 @@ public:
 
         MovingRobot::move(turn, x, y);
     }
+
     void shoot(int turn) const override
     {
         ShootingRobot::shoot(turn);
     }
+
     void see(int turn) const override
     {
         SeeingRobot::see(turn);
@@ -488,7 +491,39 @@ class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRob
     }
     void shoot(int turn) const override
     {
+
+        int list_position = 0;
+
+        int random_number = rand() % 10;
+        cout << robot_namelist[turn] << " is trying to shoot " << endl;
+        int x = robot_x_pos[turn];
+        int y = robot_y_pos[turn];
+        // shoot algorithm for the robot
+        string target = search_for_robot(x, y, 3);
+        if (!target.empty()) // shoot successfully
+        {
+            if (random_number < 7) // 70 % will hit
+            {
+                cout << target << " is being shoot by " << robot_namelist[turn] << endl;
+                cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
+                list_position = search_hit_target(target);
+                robot_lives[list_position]--;
+                cout << target << " is destroyed " << endl;
+                cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
+                robot_destroyed[list_position] = 1;
+                upgrade_robot(turn);
+            }
+            else
+            {
+                cout << robot_namelist[turn] << " miss the long range shot " << endl;
+            }
+        }
+        else
+        {
+            cout << robot_namelist[turn] << " did not find someone to shoot " << endl;
+        }
     }
+
     void see(int turn) const override
     {
         cout << "seeing now " << endl;
