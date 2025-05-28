@@ -20,9 +20,11 @@ using namespace std;
 
 int row_number, column_number = 0;
 int robot_number = 0;
+int teleport_x_pos, teleport_y_pos;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
 vector<int> robot_upgraded;
+vector<int> jump_left;
 
 // fetching data from frame h and load it to this file
 
@@ -72,7 +74,7 @@ string search_loop(int x, int y) // search looping to be use in the algorithm
         return "";
     }
 }
-string search_for_robot(int x0, int y0, int range)
+string search_for_robot(int x0, int y0)
 {
     const int dx[8] = {0, 1, 1, 1, 0, -1, -1, -1}; // using const array to fix the search movement
     const int dy[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -129,28 +131,37 @@ void upgrade_robot(int turn)
     if (robot_upgraded[turn] == 0)
     { // the robot haven't upgraded
         int dice_number = rand() % 7;
+        robot_upgraded[turn]++;
         switch (dice_number)
         {
         case 0:
             robot_genre[turn] = "HideBot";
+            break;
         case 1:
             robot_genre[turn] = "JumpBot";
+            break;
         case 2:
             robot_genre[turn] = "LongShotBot";
+            break;
         case 3:
             robot_genre[turn] = "SemiAutoBot";
+            break;
         case 4:
             robot_genre[turn] = "ThirtyShotBot";
+            break;
         case 5:
             robot_genre[turn] = "ScoutBot";
+            break;
         case 6:
             robot_genre[turn] = "TrackBot";
+            break;
         }
         cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
     }
     else // if the robot is not valid for upgrading
         cout << " The robot has already upgraded " << endl;
 }
+
 
 class Robot // abstract base class
             // doesn't exist until to be derived
@@ -369,7 +380,7 @@ public:
         int y = robot_y_pos[turn];
         // shoot algorithm for the robot
         int z = 3;
-        string target = search_for_robot(x, y, 1);
+        string target = search_for_robot(x, y);
         if (!target.empty()) // shoot successfully
         {
             if (random_number < 7) // 70 % will hit
@@ -403,7 +414,7 @@ public:
         cout << robot_namelist[turn] << " is seeing now " << endl;
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
-        search_for_robot(x, y, 1);
+        search_for_robot(x, y);
     }
 };
 
@@ -480,6 +491,7 @@ public:
 // zh part
 class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
+public:
     void think(int turn) const override
     {
         cout << robot_namelist[turn] << " is thinking" << endl;
@@ -499,10 +511,10 @@ class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRob
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
         // shoot algorithm for the robot
-        string target = search_for_robot(x, y, 3);
+        string target = search_for_robot(x*3, y*3);
         if (!target.empty()) // shoot successfully
         {
-            if (random_number < 7) // 70 % will hit
+            if (random_number < 7)
             {
                 cout << target << " is being shoot by " << robot_namelist[turn] << endl;
                 cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;

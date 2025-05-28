@@ -211,8 +211,13 @@ public:
     void dice(int turn)
     {
         GenericBot normal_robot; // constructor for different genre of robot
-        JumpBot Jump_Bot;
+        JumpBot jump_Bot;
         HideBot hide_robot;
+        LongShotBot long_bot;
+        SemiAutoBot semi_bot;
+        ThirtyShotBot thirty_bot;
+        ScoutBot scout_bot;
+        TrackBot track_bot;
 
         // int random_number = 4;
         int random_number = (rand() % 4);
@@ -239,22 +244,139 @@ public:
         {
             if (random_number == 0)
             {
-                Jump_Bot.think(turn);
+                jump_Bot.think(turn);
             }
             else if (random_number == 1)
             {
-                Jump_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+                jump_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
             }
             else if (random_number == 2)
             {
-                Jump_Bot.shoot(turn);
+                jump_Bot.shoot(turn);
             }
             else
             {
-                Jump_Bot.see(turn);
+                jump_Bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "HideBot")
+        {
+            if (random_number == 0)
+            {
+                hide_robot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                hide_robot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                hide_robot.shoot(turn);
+            }
+            else
+            {
+                hide_robot.see(turn);
+            }
+        }
+
+        else if (robot_genre[turn] == "LongShotBot")
+        {
+            if (random_number == 0)
+            {
+                long_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                long_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                long_bot.shoot(turn);
+            }
+            else
+            {
+                long_bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "SemiAutoBot")
+        {
+            if (random_number == 0)
+            {
+                semi_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                semi_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                semi_bot.shoot(turn);
+            }
+            else
+            {
+                semi_bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "ThirtyShotBot")
+        {
+            if (random_number == 0)
+            {
+                thirty_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                thirty_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                thirty_bot.shoot(turn);
+            }
+            else
+            {
+                thirty_bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "ScoutBot")
+        {
+            if (random_number == 0)
+            {
+                scout_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                scout_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                scout_bot.shoot(turn);
+            }
+            else
+            {
+                scout_bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "TrackBot")
+        {
+            if (random_number == 0)
+            {
+                track_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                track_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                track_bot.shoot(turn);
+            }
+            else
+            {
+                track_bot.see(turn);
             }
         }
     }
+
+
     void frame_loop() // main frame loop for the program
     {
 
@@ -277,23 +399,24 @@ public:
             cout << endl;
         };
     }
+
     void type_checker(int x)
     {
     }
+
     void value_initialize()
     {
         for (int i = 0; i < robot_numbers; i++)
         {
             // value in robot header
-            robot_looked.push_back(0);
             robot_ammo_left.push_back(10);
             robot_lives.push_back(3);
             robot_destroyed.push_back(0);
             robot_upgraded.push_back(0);
+            jump_left.push_back(3);
         }
-
-        cout << "data initialize completely " << endl;
-    }
+            cout << "data initialize completely " << endl;
+    }
 
     void displayBattlefield()
     {
