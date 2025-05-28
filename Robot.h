@@ -28,20 +28,45 @@ vector<int> jump_left;
 
 // fetching data from frame h and load it to this file
 
-void random_telepor()
-{
-}
-void robot_fetching_data(int row, int column, int bot_number, string name, string genre, int x_pos, int y_pos)
+void robot_fetching_data(int bot_number, string name, int x_pos, int y_pos)
 
 {
     cout << "data loading ..." << endl;
-    row_number = row;
-    column_number = column;
+
     robot_number = bot_number;
     robot_namelist.push_back(name);
-    robot_genre.push_back(genre);
     robot_x_pos.push_back(x_pos);
     robot_y_pos.push_back(y_pos);
+}
+
+void random_teleport()
+{
+
+    bool teleport_done = false;
+    cout << " teleporting" << endl;
+    while (!teleport_done) // while not finding the choosen coordinate keep looping
+    {
+        bool found_collision = false;
+        teleport_x_pos = rand() % column_number + 1; // random x coordinate
+        teleport_y_pos = rand() % row_number + 1;
+        cout << "x = " << teleport_x_pos << endl;
+        cout << "y = " << teleport_y_pos << endl;
+        for (int i = 0; i < robot_number; i++) // checking if the choose number has already a existing one in the list
+        {
+
+            if (teleport_x_pos == robot_x_pos[i] && teleport_y_pos == robot_y_pos[i])
+            {
+                found_collision = true; // added another boolean to make sure every pair of coordinate is check
+            }
+        }
+        if (found_collision == true) // if collision happen continue to loop it
+        {
+            teleport_done = false;
+        }
+        else
+            teleport_done = true;
+    }
+    cout << " The choosen teleportation coordinate = " << teleport_x_pos << " , " << teleport_y_pos << endl;
 }
 
 void robot_data_debug()
@@ -381,13 +406,18 @@ public:
         // shoot algorithm for the robot
         int z = 3;
         string target = search_for_robot(x, y);
+        list_position = search_hit_target(target);
         if (!target.empty()) // shoot successfully
         {
-            if (random_number < 7) // 70 % will hit
+            if (robot_genre[list_position] == "HideBot")
+            {
+                cout << "Target " << robot_namelist[list_position] << " is hiding from the shoot" << endl;
+            }
+            else if (random_number < 7) // 70 % will hit
             {
                 cout << target << " is being shoot by " << robot_namelist[turn] << endl;
                 cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
-                list_position = search_hit_target(target);
+
                 robot_lives[list_position]--;
                 cout << target << " is destroyed " << endl;
                 cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
@@ -468,15 +498,29 @@ public:
 };
 class JumpBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
+
 public:
     void think(int turn) const override
     {
+
         ThinkingRobot::think(turn);
     }
     void move(int turn, int &x, int &y) const override
     {
+        if (jump_left[turn] != 0)
+        {
 
-        MovingRobot::move(turn, x, y);
+            cout << robot_namelist[turn] << " is using the jump ability " << endl;
+            random_teleport();
+            robot_x_pos[turn], x = teleport_x_pos;
+            robot_y_pos[turn], y = teleport_y_pos;
+            jump_left[turn]--;
+            cout << " Robot " << robot_namelist[turn] << " has jumped to " << teleport_x_pos << " and " << teleport_y_pos << endl;
+            cout << jump_left[turn] << "jump are left" << endl;
+        }
+        else
+
+            MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
     {

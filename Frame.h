@@ -37,7 +37,7 @@ public:
     int Row_number = 0, Column_number = 0;
     int remaining_round = 0;
 
-    vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
+    vector<string> robot_namelist; // vector to store the robot namelist
     vector<int> robot_x_pos, robot_y_pos;
 
     void fetching_data() // fetching data to the robot header file
@@ -45,7 +45,7 @@ public:
         cout << "fetching data ... " << endl;
         for (int i = 0; i < robot_numbers; i++)
         {
-            robot_fetching_data(Row_number, Column_number, robot_numbers, robot_namelist[i], robot_genre[i], robot_x_pos[i], robot_y_pos[i]);
+            robot_fetching_data(robot_numbers, robot_namelist[i], robot_x_pos[i], robot_y_pos[i]);
         }
     }
     void reading_from_file(string file_name)
@@ -100,11 +100,13 @@ public:
                 {
                     Row_number = found;
                     cout << "Row number = " << Row_number << endl;
+                    row_number = Row_number;
                 }
                 else
                 {
                     Column_number = found;
                     cout << "Column number = " << Column_number << endl;
+                    column_number = Column_number;
                 }
                 loop_times++;
             }
@@ -175,13 +177,29 @@ public:
             }
             else if (i == 2)
             {
-                int temp2 = stoi(temps[i]); // converting string into i to be push back
-                robot_x_pos.push_back(temp2);
+                cout << temp;
+                if (temp == "random")
+                {
+                    random_teleport();
+                    robot_x_pos.push_back(teleport_x_pos);
+                }
+                else
+                {
+                    int temp2 = stoi(temps[i]); // converting string into i to be push back
+                    robot_x_pos.push_back(temp2);
+                }
             }
             else
             {
-                int temp2 = stoi(temps[i]);
-                robot_y_pos.push_back(temp2);
+                if (temp == "random")
+                {
+                    robot_y_pos.push_back(teleport_y_pos);
+                }
+                else
+                {
+                    int temp2 = stoi(temps[i]);
+                    robot_y_pos.push_back(temp2);
+                }
             }
         }
     }
