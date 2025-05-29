@@ -213,6 +213,10 @@ public:
         GenericBot normal_robot; // constructor for different genre of robot
         JumpBot Jump_Bot;
         HideBot hide_robot;
+        SemiAutoBot Semi_Auto_Bot;
+        ThirtyShotBot Thirty_Bot;
+        TrackBot Track_Bot;
+        TankBot Tank;
 
         // int random_number = 4;
         int random_number = (rand() % 4);
@@ -254,6 +258,85 @@ public:
                 Jump_Bot.see(turn);
             }
         }
+        // Nicholas Start
+        else if (robot_genre[turn] == "ShootingRobot")
+        {
+            if (random_number == 0)
+            {
+                Semi_Auto_Bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Semi_Auto_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Semi_Auto_Bot.shoot(turn);
+            }
+
+            else
+            {
+                Semi_Auto_Bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "ThirtyShotBot")
+        {
+            if (random_number == 0)
+            {
+                Thirty_Bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Thirty_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Thirty_Bot.shoot(turn);
+            }
+            else
+            {
+                Thirty_Bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "TrackBot")
+        {
+            if (random_number == 0)
+            {
+                Track_Bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Track_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Track_Bot.shoot(turn);
+            }
+            else
+            {
+                Track_Bot.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "Tank")
+        {
+            if (random_number == 0)
+            {
+                Tank.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Tank.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Tank.shoot(turn);
+            }
+            else
+            {
+                Tank.see(turn);
+            }
+        }
+        // Nicholas End
     }
     void frame_loop() // main frame loop for the program
     {

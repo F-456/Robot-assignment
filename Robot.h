@@ -15,6 +15,8 @@ Phone: 018-1234567
 #include <fstream>
 #include <ctime>
 #include <vector>
+#include <limits> // Nicholas
+#include <cmath>  // Nicholas
 
 using namespace std;
 
@@ -23,6 +25,8 @@ int robot_number = 0;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
 vector<int> robot_upgraded;
+vector<int> robot_tracked_target; // which single robot-index each bot is tracking, or -1 if none yet // Nicholas
+vector<bool> tank_shield_used;    // false by default, same index as robot  // Nicholas
 
 // fetching data from frame h and load it to this file
 
@@ -40,6 +44,7 @@ void robot_fetching_data(int row, int column, int bot_number, string name, strin
     robot_genre.push_back(genre);
     robot_x_pos.push_back(x_pos);
     robot_y_pos.push_back(y_pos);
+    robot_tracked_target.push_back(-1); // -1 means “no tracker planted yet”  // Nicholas
 }
 
 void robot_data_debug()
@@ -128,11 +133,12 @@ void upgrade_robot(int turn)
 {
     if (robot_upgraded[turn] == 0)
     { // the robot haven't upgraded
-        int dice_number = rand() % 7;
+        int dice_number = rand() % 8;
         switch (dice_number)
         {
         case 0:
             robot_genre[turn] = "HideBot";
+            break;
         case 1:
             robot_genre[turn] = "JumpBot";
         case 2:
@@ -140,11 +146,29 @@ void upgrade_robot(int turn)
         case 3:
             robot_genre[turn] = "SemiAutoBot";
         case 4:
-            robot_genre[turn] = "ThirtyShotBot";
+            robot_genre[turn] = "ThirtyShotBot";                                      // Nicholas
+            cout << robot_namelist[turn] << " receives a fresh load of 30 shells.\n"; // Nicholas
+            robot_ammo_left[turn] = 30;                                               // Nicholas
+            break;
         case 5:
             robot_genre[turn] = "ScoutBot";
+            break;
+        // Nicholas Start
         case 6:
             robot_genre[turn] = "TrackBot";
+            {
+                void track();
+            }
+            break;
+        case 7:
+            robot_genre[turn] = "TankBot";
+            {
+                robot_genre[turn] = "TankBot";
+                robot_lives[turn] = 4;
+                tank_shield_used[turn] = false;
+            }
+            // Nicholas End
+            break;
         }
         cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
     }
@@ -361,7 +385,6 @@ class ShootingRobot : virtual public Robot
 public:
     void shoot(int turn) const override
     {
-
         int list_position = 0;
 
         int random_number = rand() % 10;
@@ -495,7 +518,7 @@ class LongShotBot : public ThinkingRobot, public MovingRobot, public ShootingRob
         cout << "seeing now " << endl;
     }
 };
-// Nicholas
+// Nicholas start
 class SemiAutoBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
 public:
@@ -527,7 +550,6 @@ public:
     }
     void move(int turn, int &x, int &y) const override
     {
-
         MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
@@ -562,7 +584,7 @@ public:
         SeeingRobot::see(turn);
     }
 };
-// Nicholas
+// Nicholas Start
 class TrackBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
 public:
@@ -582,5 +604,123 @@ public:
     void see(int turn) const override
     {
         SeeingRobot::see(turn);
+        // Then handle tracking: if none yet, plant on nearest
+        int &tracked = robot_tracked_target[turn];
+        if (tracked == -1)
+        {
+            double bestDist = numeric_limits<double>::infinity();
+            int bestIdx = -1;
+            int x0 = robot_x_pos[turn], y0 = robot_y_pos[turn];
+            for (int i = 0; i < robot_number; ++i)
+            {
+                if (i == turn)
+                    continue;
+                double dx = robot_x_pos[i] - x0;
+                double dy = robot_y_pos[i] - y0;
+                double d = sqrt(dx * dx + dy * dy);
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    bestIdx = i;
+                }
+            }
+            if (bestIdx != -1)
+            {
+                tracked = bestIdx;
+                cout << robot_namelist[turn] << " plants tracker on '" << robot_namelist[bestIdx] << "' at (" << robot_x_pos[bestIdx] << "," << robot_y_pos[bestIdx] << ")" << std::endl;
+            }
+        }
+        // If already tracking, report coordinates
+        if (tracked != -1)
+        {
+            cout << robot_namelist[turn]
+                 << " tracking '" << robot_namelist[tracked]
+                 << "' at (" << robot_x_pos[tracked]
+                 << "," << robot_y_pos[tracked] << ")" << std::endl;
+        }
+    }
+    void track(int turn)
+    {
+        // Find nearest
+        double bestDist = numeric_limits<double>::infinity();
+        int bestIdx = -1;
+        int x0 = robot_x_pos[turn], y0 = robot_y_pos[turn];
+        for (int i = 0; i < robot_number; ++i)
+        {
+            if (i == turn)
+                continue;
+            double dx = robot_x_pos[i] - x0;
+            double dy = robot_y_pos[i] - y0;
+            double d = sqrt(dx * dx + dy * dy);
+            if (d < bestDist)
+            {
+                bestDist = d;
+                bestIdx = i;
+            }
+        }
+        if (bestIdx != -1)
+        {
+            cout << robot_namelist[turn] << " is upgraded to TrackBot and plants a tracker on '" << robot_namelist[bestIdx] << "' at (" << robot_x_pos[bestIdx] << "," << robot_y_pos[bestIdx] << ")\n";
+            robot_tracked_target[turn] = bestIdx;
+        }
     }
 };
+
+class TankBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+    void take_damage(int turn)
+    {
+        if (robot_genre[turn] == "TankBot")
+        {
+            if (!tank_shield_used[turn])
+            {
+                cout << robot_namelist[turn] << "'s shield absorbed the damage!" << endl;
+                tank_shield_used[turn] = true;
+            }
+            else
+            {
+                robot_lives[turn]--;
+                cout << robot_namelist[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
+
+                if (robot_lives[turn] <= 0)
+                {
+                    cout << robot_namelist[turn] << " is destroyed!" << endl;
+                    robot_destroyed[turn] = 1;
+                }
+                else
+                {
+                    tank_shield_used[turn] = false; // reset shield for next life cycle if you want
+                }
+            }
+        }
+        else
+        {
+            // Default damage behavior for non-TankBot robots
+            robot_lives[turn]--;
+            cout << robot_namelist[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
+            if (robot_lives[turn] <= 0)
+            {
+                cout << robot_namelist[turn] << " is destroyed!" << endl;
+                robot_destroyed[turn] = 1;
+            }
+        }
+    }
+};
+// Nicholas End
