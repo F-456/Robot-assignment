@@ -403,6 +403,7 @@ public:
             else if (random_number == 1)
             {
                 shield.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
             else if (random_number == 2)
             {
                 shield.shoot(turn);
