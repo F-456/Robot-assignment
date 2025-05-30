@@ -17,11 +17,11 @@ Phone: 018-1234567
 #include <vector>
 #include <limits>
 #include <cmath>
-#include <mutex>
 
 using namespace std;
 int row_number, column_number = 0;
 int robot_num = 0;
+int scout_use = 3;
 int teleport_x_pos, teleport_y_pos;
 vector<string> robot_name, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x, robot_y, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
@@ -29,6 +29,7 @@ vector<int> robot_upgraded;
 vector<int> jump_left, hide_left;
 vector<int> robot_tracked_target; // which single robot-index each bot is tracking, or -1 if none yet
 vector<bool> tank_shield_used;    // false by default, same index as robot
+vector<int> repel_left;
 
 // fetching data from frame h and load it to this file
 
@@ -133,6 +134,83 @@ string search_for_robot(int x0, int y0)
 
     return target;
 }
+
+string long_range_search(int x, int y, int range)
+{
+    for (int dx = -range; dx <= range; dx++)
+    {
+        for (int dy = -range; dy <= range; dy++)
+        {
+            if (dx == 0 && dy == 0)
+                continue; // Skip itself
+
+            int longx = x + dx;
+            int longy = y + dy;
+
+            if (longx < 0 || longy < 0 || longx >= 10 || longy >= 7)
+                continue;
+
+            string target = search_loop(longx, longy);
+            // cout << longx << "," << longy << endl;
+
+            if (!target.empty())
+            {
+                cout << "Target found: " << target << endl;
+                return target;
+            }
+        }
+    }
+
+    cout << "No target is found in the range\n";
+    return "";
+}
+void scout_skill(int turn)
+{
+    // for (int scout_use = 3; scout_use >=0; scout_use--)
+    // {
+    //     if (scout_use >0)
+    //     {
+    //         cout << "Remaining scout: " << scout_use << endl;
+
+    //         cout << robot_namelist[turn] << " is scouting the entire battlefield" << endl;
+
+    //         for(int i = 0; i < robot_number; i++)
+    //             {
+    //                 if(i == turn) continue; //skip itself
+    //                 cout << "Detected enemy: " << robot_namelist[i] << " [" << robot_x_pos[i] << ", " << robot_y_pos[i] << "]" << endl;
+    //             }
+
+    //     }
+    //     else
+    //     {
+    //         cout << robot_namelist[turn] << " has use all the scout chance" << endl;
+    //         return;
+    //     }
+    // }
+    // int scout_use = 3;
+    if (scout_use <= 0)
+    {
+        cout << robot_name[turn] << " has use all the scout chance" << endl;
+        return;
+    }
+    // int x = robot_x_pos[turn];
+    // int y = robot_y_pos[turn];
+    // int full_range = 8;
+
+    cout << robot_name[turn] << " is scouting the entire battlefield" << endl;
+
+    for (int i = 0; i < robot_num; i++)
+    {
+        if (i == turn)
+            continue; // skip itself
+        cout << "Detected enemy: " << robot_name[i] << " [" << robot_x[i] << ", " << robot_y[i] << "]" << endl;
+    }
+
+    scout_use--;
+    cout << "Remaining scout: " << scout_use << endl;
+    // string found = long_range_search(x, y, full_range);
+}
+
 bool move_robot_search(int x, int y)
 {
     for (int i = 0; i < robot_num; i++)
@@ -164,7 +242,7 @@ void upgrade_robot(int turn)
 {
     if (robot_upgraded[turn] == 0)
     { // the robot haven't upgraded
-        int dice_number = rand() % 7;
+        int dice_number = rand() % 9;
         robot_upgraded[turn]++;
         switch (dice_number)
         {
@@ -195,6 +273,13 @@ void upgrade_robot(int turn)
             }
             break;
         case 7:
+            robot_genre[turn] = "RepelBot";
+            repel_left[turn]++;
+            break;
+        case 8:
+            robot_genre[turn] = "DoubleBot";
+            break;
+        case 9:
             robot_genre[turn] = "TankBot";
             {
                 robot_genre[turn] = "TankBot";
@@ -217,9 +302,7 @@ void check_robot_dead(int target_position, int turn)
     if (robot_lives[target_position] == 0)
     {
         cout << robot_name[dead_index] << " is dead " << endl;
-        robot_num--;
         robot_name.erase(robot_name.begin() + dead_index);
-        cout << " dead index = " << dead_index << endl;
         cout << "deleted x and y are " << robot_x[dead_index] << ", " << robot_y[dead_index] << endl;
         robot_x.erase(robot_x.begin() + dead_index);
         robot_y.erase(robot_y.begin() + dead_index);
@@ -230,6 +313,7 @@ void check_robot_dead(int target_position, int turn)
         jump_left.erase(jump_left.begin() + dead_index);
         hide_left.erase(hide_left.begin() + dead_index);
         robot_tracked_target.erase(robot_tracked_target.begin() + dead_index);
+        robot_num--;
     }
 }
 
@@ -460,12 +544,21 @@ public:
                 hide_left[list_position]--;
                 cout << robot_name[list_position] << " have " << hide_left[list_position] << " times of hide left" << endl;
             }
+            else if (repel_left[list_position] == 1)
+            {
+                cout << "Target " << robot_name[list_position] << " active a repel shot" << endl;
+                cout << robot_name[turn] << " is shoot by itself " << endl;
+                robot_lives[turn]--;
+                robot_ammo_left[turn]--;
+                repel_left[list_position]--;
+                cout << "Robot " << robot_name[turn] << " now have " << robot_lives[turn] << " lives left\n";
+                cout << " ammo left: " << robot_ammo_left[turn] << endl;
+            }
             else if (random_number < 7) // 70 % will hit
             {
-
+                robot_ammo_left[turn]--;
                 cout << target << " is being shoot by " << robot_name[turn] << endl;
-                cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
-
+                cout << " ammo left: " << robot_ammo_left[turn] << endl;
                 robot_lives[list_position]--;
                 check_robot_dead(list_position, turn);
                 cout << target << " is destroyed " << endl;
@@ -597,10 +690,59 @@ public:
     }
     void shoot(int turn) const override
     {
+
+        int list_position = 0;
+
+        int random_number = rand() % 10;
+        cout << robot_name[turn] << " is using longshot ability" << endl;
+        int x = robot_x[turn];
+        int y = robot_y[turn];
+        // shoot algorithm for the robot
+        string target = long_range_search(x, y, 3);
+        if (!target.empty()) // shoot successfully
+        {
+            if (robot_genre[list_position] == "HideBot" && hide_left[list_position] > 0)
+            {
+                cout << "Target " << robot_name[list_position] << " is hiding from the shoot" << endl;
+                hide_left[list_position]--;
+                cout << robot_name[list_position] << " have " << hide_left[list_position] << " times of hide left" << endl;
+            }
+            else if (repel_left[list_position] == 1)
+            {
+                cout << "Target " << robot_name[list_position] << " active a repel shot" << endl;
+                cout << robot_name[turn] << " is shoot by itself " << endl;
+                robot_lives[turn]--;
+                robot_ammo_left[turn]--;
+                repel_left[list_position]--;
+                cout << "Robot " << robot_name[turn] << " now have " << robot_lives[turn] << " lives left\n";
+                cout << " ammo left: " << robot_ammo_left[turn] << endl;
+            }
+            else if (random_number < 7)
+            {
+                cout << target << " is being shoot by " << robot_name[turn] << endl;
+                robot_ammo_left[turn]--;
+                cout << " ammo left: " << robot_ammo_left[turn] << endl;
+                list_position = search_hit_target(target);
+                robot_lives[list_position]--;
+                cout << target << " is destroyed " << endl;
+                cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
+                robot_destroyed[list_position] = 1;
+                upgrade_robot(turn);
+            }
+            else
+            {
+                cout << robot_name[turn] << " miss the long range shot " << endl;
+            }
+        }
+        else
+        {
+            cout << robot_name[turn] << " did not find someone to shoot " << endl;
+        }
     }
+
     void see(int turn) const override
     {
-        cout << "seeing now " << endl;
+        SeeingRobot::see(turn);
     }
 };
 // Nicholas start
@@ -666,7 +808,7 @@ public:
     }
     void see(int turn) const override
     {
-        SeeingRobot::see(turn);
+        scout_skill(turn);
     }
 };
 // Nicholas
@@ -805,5 +947,47 @@ public:
                 robot_destroyed[turn] = 1;
             }
         }
+    }
+};
+class RepelBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
+    }
+};
+
+class DoubleBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+{
+public:
+    void think(int turn) const override
+    {
+        ThinkingRobot::think(turn);
+    }
+    void move(int turn, int &x, int &y) const override
+    {
+        MovingRobot::move(turn, x, y);
+        MovingRobot::move(turn, x, y);
+    }
+    void shoot(int turn) const override
+    {
+        ShootingRobot::shoot(turn);
+    }
+    void see(int turn) const override
+    {
+        SeeingRobot::see(turn);
     }
 };
