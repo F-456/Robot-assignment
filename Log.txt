@@ -1,0 +1,1418 @@
+Column number = 8
+Row number = 5
+Steps = 50
+Robot numbers = 4
+3451data initialize completely 
+fetching data ... 
+data loading ...
+data loading ...
+data loading ...
+data loading ...
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5Ja|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is seeing now 
+robot Nicholas is found
+target found: Nicholas
+ now is turn 2
+
+Jason is thinking what to do next
+ now is turn 3
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :1
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5Ja|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is moving up 
+ now is turn 2
+
+Jason is moving up 
+ now is turn 3
+
+John is moving down right 
+
+
+Round = :2
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3Ve|Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Ja|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is seeing now 
+robot John is found
+target found: John
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+Jason is moving right 
+ now is turn 3
+
+John is seeing now 
+robot Nicholas is found
+target found: Nicholas
+
+
+Round = :3
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3Ve|Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Ja|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is seeing now 
+robot John is found
+target found: John
+ now is turn 1
+
+Veron is seeing now 
+robot Nicholas is found
+target found: Nicholas
+ now is turn 2
+
+Jason is thinking what to do next
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :4
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3Ve|Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Ja|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is seeing now 
+robot John is found
+target found: John
+ now is turn 1
+
+Veron is moving up 
+ now is turn 2
+
+Jason is moving down right 
+ now is turn 3
+
+John is moving up right 
+
+
+Round = :5
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |Ja|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is seeing now 
+robot Veron is found
+target found: Veron
+ now is turn 1
+
+Veron is seeing now 
+robot Nicholas is found
+target found: Nicholas
+ now is turn 2
+
+Jason is trying to shoot 
+No target is found in the range
+Jason did not find someone to shoot 
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :6
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |Ja|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving right 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+Jason is moving right 
+ now is turn 3
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :7
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |Ja|  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+Jason is seeing now 
+No target is found in the range
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :8
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |Ja|  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+Jason is trying to shoot 
+No target is found in the range
+Jason did not find someone to shoot 
+ now is turn 3
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :9
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |Ja|  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+Jason is moving up left 
+ now is turn 3
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :10
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |Ja|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+Jason is thinking what to do next
+ now is turn 3
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :11
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |Ja|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving up left 
+ now is turn 1
+
+Veron is trying to shoot 
+robot Nicholas is found
+target found: Nicholas
+Nicholas is being shoot by Veron
+ ammo left: 9
+Nicholas is destroyed 
+Robot Nicholas now have 2 lives left
+Veron is upgrading into a HideBot
+ now is turn 2
+
+Jason is seeing now 
+No target is found in the range
+ now is turn 3
+
+John is moving down right 
+
+
+Round = :12
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|Ni|  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |Ja|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is seeing now 
+robot Veron is found
+target found: Veron
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+Jason is moving up right 
+ now is turn 3
+
+John is trying to shoot 
+robot Jason is found
+target found: Jason
+Jason is being shoot by John
+ ammo left: 9
+Jason is destroyed 
+Robot Jason now have 2 lives left
+John receives a fresh load of 30 shells.
+John is upgrading into a ThirtyShotBot
+
+
+Round = :13
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|Ni|  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |Ja|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down right 
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+Jason is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :14
+Nicholas,Veron,Jason,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|Ja|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+robot Jason is found
+target found: Jason
+Jason is being shoot by Nicholas
+ ammo left: 9
+Jason is destroyed 
+Robot Jason now have 1 lives left
+Nicholas is upgrading into a TrackBot
+ now is turn 1
+
+Veron is moving up 
+ now is turn 2
+
+Jason is thinking what to do next
+ now is turn 3
+
+John is trying to shoot 
+robot Jason is found
+target found: Jason
+Jason is being shoot by John
+ ammo left: 29
+Jason is dead 
+ dead index = 2
+deleted x and y are 4, 3
+Jason is destroyed 
+Robot Jason now have 3 lives left
+ The robot has already upgraded 
+
+
+Round = :15
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :16
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (3,3)
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :17
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is moving down 
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :18
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down left 
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :19
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Ni|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down right 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :20
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :21
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :22
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving right 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :23
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |Jo|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |Ni|  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving up right 
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is moving down left 
+
+
+Round = :24
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |Ni|  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is moving up 
+
+
+Round = :25
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |Ni|  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down right 
+ now is turn 1
+
+Veron is moving up 
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :26
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :27
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is moving up 
+
+
+Round = :28
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving up 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :29
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,4)
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :30
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1Ve|  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is moving down 
+ now is turn 2
+
+John is moving left 
+
+
+Round = :31
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving up right 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :32
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |Ni|  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving left 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is moving down left 
+
+
+Round = :33
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is moving down right 
+
+
+Round = :34
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Jo|  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,3)
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is moving up 
+
+
+Round = :35
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving right 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is moving down left 
+
+
+Round = :36
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Ve|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Jo|  |  |  |  |Ni|  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is moving up right 
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :37
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Jo|  |  |  |  |Ni|  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :38
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Jo|  |  |  |  |Ni|  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (7,3)
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :39
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Jo|  |  |  |  |Ni|  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down left 
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :40
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is moving down left 
+
+
+Round = :41
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :42
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |Ve|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,4)
+ now is turn 1
+
+Veron is moving down right 
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :43
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :44
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,4)
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is thinking what to do next
+
+
+Round = :45
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is trying to shoot 
+No target is found in the range
+Nicholas did not find someone to shoot 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is moving down right 
+
+
+Round = :46
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,4)
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is moving left 
+
+
+Round = :47
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+5Jo|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is moving down 
+ now is turn 1
+
+Veron is seeing now 
+No target is found in the range
+ now is turn 2
+
+John is seeing now 
+No target is found in the range
+
+
+Round = :48
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas tracking 'Nicholas' at (6,5)
+ now is turn 1
+
+Veron is trying to shoot 
+No target is found in the range
+Veron did not find someone to shoot 
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :49
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 0
+
+Nicholas is thinking what to do next
+ now is turn 1
+
+Veron is thinking what to do next
+ now is turn 2
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :50
+Nicholas,Veron,John, 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |Ve|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5Jo|  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+
+ Round 50 has reached, simulation end
