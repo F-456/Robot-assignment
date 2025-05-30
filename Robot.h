@@ -20,6 +20,7 @@ using namespace std;
 
 int row_number, column_number = 0;
 int robot_number = 0;
+int scout_use = 3;
 int teleport_x_pos, teleport_y_pos;
 vector<string> robot_namelist, robot_genre; // two vector to store the robot namelist and the robot genre
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
@@ -78,27 +79,19 @@ void robot_data_debug()
     }
 }
 
-string search_loop(int x, int y) // search looping to be use in the algorithm
+string search_loop(int x, int y)// search looping to be use in the algorithm
 {
-    bool found;
-    string target = "";
-    for (int i = 0; i < robot_number; i++) // search loop
+    for (int i = 0; i < robot_number; i++) //search loop
     {
-        // cout << " searching " << x << "and " << y << endl;
-        if (robot_x_pos[i] == x && robot_y_pos[i] == y)
+        if (robot_x_pos[i] == x && robot_y_pos[i] == y && !robot_destroyed[i])
         {
-
-            string target = robot_namelist[i];
-            cout << "robot " << robot_namelist[i] << " is found" << endl;
-            found = true;
-            return target;
+            cout << "Robot " << robot_namelist[i] << " is found at " << robot_x_pos[i] << "," << robot_y_pos[i] << endl;
+            return robot_namelist[i];
         }
     }
-    if (!found)
-    {
-        return "";
-    }
+    return "";
 }
+
 string search_for_robot(int x0, int y0)
 {
     const int dx[8] = {0, 1, 1, 1, 0, -1, -1, -1}; // using const array to fix the search movement
@@ -123,6 +116,81 @@ string search_for_robot(int x0, int y0)
 
     return target;
 }
+string long_range_search(int x, int y, int range)
+{
+    for (int dx = -range; dx <= range; dx++)
+    {
+        for (int dy = -range; dy <= range; dy++)
+        {
+            if (dx == 0 && dy == 0)
+                continue; // Skip itself
+
+            int longx = x + dx;
+            int longy = y + dy;
+
+            if (longx < 0 || longy < 0 || longx >= 10 || longy >= 7)
+                continue;
+
+            string target = search_loop(longx, longy);
+            cout << longx << "," << longy << endl;
+
+            if (!target.empty())
+            {
+                cout << "Target found: " << target << endl;
+                return target;
+            }
+        }
+    }
+
+    cout << "No target is found in the range\n";
+    return "";
+}
+void scout_skill(int turn)
+    {
+        // for (int scout_use = 3; scout_use >=0; scout_use--)
+        // {
+        //     if (scout_use >0)
+        //     {
+        //         cout << "Remaining scout: " << scout_use << endl;
+
+        //         cout << robot_namelist[turn] << " is scouting the entire battlefield" << endl;
+
+        //         for(int i = 0; i < robot_number; i++)
+        //             {
+        //                 if(i == turn) continue; //skip itself
+        //                 cout << "Detected enemy: " << robot_namelist[i] << " [" << robot_x_pos[i] << ", " << robot_y_pos[i] << "]" << endl;
+        //             }
+
+        //     }
+        //     else
+        //     {
+        //         cout << robot_namelist[turn] << " has use all the scout chance" << endl;
+        //         return;
+        //     }
+        // }
+        // int scout_use = 3;
+        if (scout_use <= 0)
+            {
+                cout << robot_namelist[turn] << " has use all the scout chance" << endl;
+                return;
+            }
+                //int x = robot_x_pos[turn];
+                //int y = robot_y_pos[turn];
+                //int full_range = 8;
+
+                cout << robot_namelist[turn] << " is scouting the entire battlefield" << endl;
+
+                for(int i = 0; i < robot_number; i++)
+                    {
+                        if(i == turn) continue; //skip itself
+                        cout << "Detected enemy: " << robot_namelist[i] << " [" << robot_x_pos[i] << ", " << robot_y_pos[i] << "]" << endl;
+                    }
+
+            scout_use--;
+            cout << "Remaining scout: " << scout_use << endl;
+                //string found = long_range_search(x, y, full_range);
+    }
+
 bool move_robot_search(int x, int y)
 {
     for (int i = 0; i < robot_number; i++)
@@ -555,7 +623,7 @@ public:
         int x = robot_x_pos[turn];
         int y = robot_y_pos[turn];
         // shoot algorithm for the robot
-        string target = search_for_robot(x*3, y*3);
+        string target = long_range_search(x, y, 3);
         if (!target.empty()) // shoot successfully
         {
             if (random_number < 7)
@@ -582,7 +650,7 @@ public:
 
     void see(int turn) const override
     {
-        cout << "seeing now " << endl;
+        SeeingRobot::see(turn);
     }
 };
 // Nicholas
@@ -649,7 +717,7 @@ public:
     }
     void see(int turn) const override
     {
-        SeeingRobot::see(turn);
+        scout_skill(turn);
     }
 };
 // Nicholas

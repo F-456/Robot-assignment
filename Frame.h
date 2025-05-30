@@ -433,8 +433,8 @@ public:
             robot_upgraded.push_back(0);
             jump_left.push_back(3);
         }
-            cout << "data initialize completely " << endl;
-    }
+        cout << "data initialize completely" << endl;
+    }
 
     void displayBattlefield()
     {
