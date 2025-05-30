@@ -15,7 +15,6 @@ Phone: 018-1234567
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <windows.h>
 
 #include "Robot.h"
 using namespace std;
@@ -236,6 +235,8 @@ public:
         ThirtyShotBot thirty_bot;
         ScoutBot scout_bot;
         TrackBot track_bot;
+        RepelBot shield;
+        DoubleBot double_bot;
         TankBot Tank;
 
         // int random_number = 4;
@@ -393,7 +394,45 @@ public:
                 track_bot.see(turn);
             }
         }
-        else if (robot_genre[turn] == "Tank")
+        else if (robot_genre[turn] == "RepelBot")
+        {
+            if (random_number == 0)
+            {
+                shield.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                shield.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            else if (random_number == 2)
+            {
+                shield.shoot(turn);
+            }
+            else
+            {
+                shield.see(turn);
+            }
+        }
+        else if (robot_genre[turn] == "DoubleBot")
+        {
+            if (random_number == 0)
+            {
+                double_bot.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                double_bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                double_bot.shoot(turn);
+            }
+            else
+            {
+                double_bot.see(turn);
+            }
+        }
+
+        else if (robot_genre[turn] == "TankBot")
         {
             if (random_number == 0)
             {
@@ -429,7 +468,6 @@ public:
                 dice(x);
                 y_value = 0;
             }
-            Sleep(20);
             remaining_step++;
             cout << endl;
             cout << endl;
@@ -471,6 +509,8 @@ public:
             jump_left.push_back(3);
             hide_left.push_back(3);
             robot_tracked_target.push_back(0);
+            tank_shield_used.push_back(0);
+            repel_left.push_back(0);
         }
 
         cout << "data initialize completely " << endl;
@@ -478,7 +518,6 @@ public:
 
     void displayBattlefield()
     {
-        robot_name_debug();
         int row = Row_number;
         int column = Column_number;
         for (int y = 0; y <= row * 2; ++y)
