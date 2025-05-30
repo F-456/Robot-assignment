@@ -26,7 +26,7 @@ vector<string> robot_namelist, robot_genre; // two vector to store the robot nam
 vector<int> robot_x_pos, robot_y_pos, robot_looked, robot_lives, robot_destroyed, robot_ammo_left;
 vector<int> robot_upgraded;
 vector<int> robot_tracked_target; // which single robot-index each bot is tracking, or -1 if none yet // Nicholas
-vector<bool> tank_shield_used;    // false by default, same index as robot  // Nicholas
+int autorepair_used[100] = {0};   // array to track how many times each robot repaired (initialize to 0)
 
 // fetching data from frame h and load it to this file
 
@@ -133,48 +133,48 @@ void upgrade_robot(int turn)
 {
     if (robot_upgraded[turn] == 0)
     { // the robot haven't upgraded
-        int dice_number = rand() % 8;
-        switch (dice_number)
+        // int dice_number = rand() % 5;
+        // switch (dice_number)
         {
-        case 0:
-            robot_genre[turn] = "HideBot";
-            break;
-        case 1:
-            robot_genre[turn] = "JumpBot";
-        case 2:
-            robot_genre[turn] = "LongShotBot";
-        case 3:
-            robot_genre[turn] = "SemiAutoBot";
-        case 4:
-            robot_genre[turn] = "ThirtyShotBot";                                      // Nicholas
-            cout << robot_namelist[turn] << " receives a fresh load of 30 shells.\n"; // Nicholas
-            robot_ammo_left[turn] = 30;                                               // Nicholas
-            break;
-        case 5:
-            robot_genre[turn] = "ScoutBot";
-            break;
-        // Nicholas Start
-        case 6:
-            robot_genre[turn] = "TrackBot";
+            // case 0:
+            //     robot_genre[turn] = "HideBot";
+            //     break;
+            // case 1:
+            //     robot_genre[turn] = "JumpBot";
+            //     break;
+            // case 2:
+            //     robot_genre[turn] = "LongShotBot";
+            //     break;
+            // case 3:
+            //     robot_genre[turn] = "SemiAutoBot";
+            //     break;
+            // case 4:
+            //     robot_genre[turn] = "ThirtyShotBot";                                      // Nicholas
+            //     cout << robot_namelist[turn] << " receives a fresh load of 30 shells.\n"; // Nicholas
+            //     robot_ammo_left[turn] = 30;                                               // Nicholas
+            //     break;
+            // case 5:
+            //     robot_genre[turn] = "ScoutBot";
+            //     break;
+            // // Nicholas Start
+            // case 6:
+            //     robot_genre[turn] = "TrackBot";
+            //     {
+            //         void track();
+            //     }
+            //     break;
+            // case 7:
+            robot_genre[turn] = "AutoRepairBot";
             {
-                void track();
+                robot_genre[turn] = "AutoRepairBot";
+                // break;
             }
-            break;
-        case 7:
-            robot_genre[turn] = "TankBot";
-            {
-                robot_genre[turn] = "TankBot";
-                robot_lives[turn] = 4;
-                tank_shield_used[turn] = false;
-            }
-            // Nicholas End
-            break;
         }
         cout << robot_namelist[turn] << " is upgrading into a " << robot_genre[turn] << endl;
     }
     else // if the robot is not valid for upgrading
         cout << " The robot has already upgraded " << endl;
-}
+};
 
 class Robot // abstract base class
             // doesn't exist until to be derived
@@ -666,59 +666,42 @@ public:
     }
 };
 
-class TankBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+class AutoRepairBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
 public:
     void think(int turn) const override
     {
+        const_cast<AutoRepairBot *>(this)->regenerate(turn);
         ThinkingRobot::think(turn);
     }
     void move(int turn, int &x, int &y) const override
     {
+        const_cast<AutoRepairBot *>(this)->regenerate(turn);
         MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
     {
+        const_cast<AutoRepairBot *>(this)->regenerate(turn);
         ShootingRobot::shoot(turn);
     }
     void see(int turn) const override
     {
+        const_cast<AutoRepairBot *>(this)->regenerate(turn);
         SeeingRobot::see(turn);
     }
-    void take_damage(int turn)
+    void regenerate(int turn)
     {
-        if (robot_genre[turn] == "TankBot")
+        if (robot_genre[turn] == "AutoRepairBot")
         {
-            if (!tank_shield_used[turn])
+            if (autorepair_used[turn] < 3) // max 3 repairs allowed
             {
-                cout << robot_namelist[turn] << "'s shield absorbed the damage!" << endl;
-                tank_shield_used[turn] = true;
+                autorepair_used[turn]++;
+                robot_lives[turn]++;
+                cout << robot_namelist[turn] << " repaired 1 life point automatically. Total repairs used: " << autorepair_used[turn] << ". Current lives: " << robot_lives[turn] << endl;
             }
             else
             {
-                robot_lives[turn]--;
-                cout << robot_namelist[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
-
-                if (robot_lives[turn] <= 0)
-                {
-                    cout << robot_namelist[turn] << " is destroyed!" << endl;
-                    robot_destroyed[turn] = 1;
-                }
-                else
-                {
-                    tank_shield_used[turn] = false; // reset shield for next life cycle if you want
-                }
-            }
-        }
-        else
-        {
-            // Default damage behavior for non-TankBot robots
-            robot_lives[turn]--;
-            cout << robot_namelist[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
-            if (robot_lives[turn] <= 0)
-            {
-                cout << robot_namelist[turn] << " is destroyed!" << endl;
-                robot_destroyed[turn] = 1;
+                cout << robot_namelist[turn] << " has used all 3 auto repairs." << endl;
             }
         }
     }

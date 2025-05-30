@@ -216,7 +216,7 @@ public:
         SemiAutoBot Semi_Auto_Bot;
         ThirtyShotBot Thirty_Bot;
         TrackBot Track_Bot;
-        TankBot Tank;
+        AutoRepairBot Auto_Repair_Bot;
 
         // int random_number = 4;
         int random_number = (rand() % 4);
@@ -317,23 +317,23 @@ public:
                 Track_Bot.see(turn);
             }
         }
-        else if (robot_genre[turn] == "Tank")
+        else if (robot_genre[turn] == "AutoRepairBot")
         {
             if (random_number == 0)
             {
-                Tank.think(turn);
+                Auto_Repair_Bot.think(turn);
             }
             else if (random_number == 1)
             {
-                Tank.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+                Auto_Repair_Bot.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
             }
             else if (random_number == 2)
             {
-                Tank.shoot(turn);
+                Auto_Repair_Bot.shoot(turn);
             }
             else
             {
-                Tank.see(turn);
+                Auto_Repair_Bot.see(turn);
             }
         }
         // Nicholas End
@@ -370,7 +370,7 @@ public:
             // value in robot header
             robot_looked.push_back(0);
             robot_ammo_left.push_back(10);
-            robot_lives.push_back(3);
+            robot_lives.push_back(2);
             robot_destroyed.push_back(0);
             robot_upgraded.push_back(0);
         }
