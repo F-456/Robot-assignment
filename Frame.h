@@ -15,6 +15,8 @@ Phone: 018-1234567
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <windows.h>
+
 #include "Robot.h"
 using namespace std;
 
@@ -37,7 +39,6 @@ public:
     int Row_number = 0, Column_number = 0;
     int remaining_round = 0;
 
-    vector<string> robot_namelist; // vector to store the robot namelist
     vector<int> robot_x_pos, robot_y_pos;
 
     void fetching_data() // fetching data to the robot header file
@@ -45,7 +46,7 @@ public:
         cout << "fetching data ... " << endl;
         for (int i = 0; i < robot_numbers; i++)
         {
-            robot_fetching_data(robot_numbers, robot_namelist[i], robot_x_pos[i], robot_y_pos[i]);
+            robot_fetching_data(robot_numbers, robot_x_pos[i], robot_y_pos[i]);
         }
     }
     void reading_from_file(string file_name)
@@ -127,9 +128,8 @@ public:
             if (stringstream(temp) >> found)
             {
                 step = found;
-                remaining_round = found - 1;
+                remaining_round = 0;
                 cout << "Steps = " << step << endl;
-                remaining_step = found;
             }
         }
     }
@@ -173,7 +173,7 @@ public:
             }
             else if (i == 1)
             {
-                robot_namelist.push_back(temps[i]);
+                robot_name.push_back(temps[i]);
             }
             else if (i == 2)
             {
@@ -209,7 +209,7 @@ public:
         for (int i = 0; i < robot_numbers; i++)
         {
             cout << "robot type = " << robot_genre[i] << ", ";
-            cout << "robot name = " << robot_namelist[i] << ", ";
+            cout << "robot name = " << robot_name[i] << ", ";
             cout << "robot x position = " << robot_x_pos[i] << ", ";
             cout << "robot y position = " << robot_y_pos[i] << " " << endl;
         }
@@ -236,6 +236,7 @@ public:
         ThirtyShotBot thirty_bot;
         ScoutBot scout_bot;
         TrackBot track_bot;
+        TankBot Tank;
 
         // int random_number = 4;
         int random_number = (rand() % 4);
@@ -392,6 +393,25 @@ public:
                 track_bot.see(turn);
             }
         }
+        else if (robot_genre[turn] == "Tank")
+        {
+            if (random_number == 0)
+            {
+                Tank.think(turn);
+            }
+            else if (random_number == 1)
+            {
+                Tank.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+            }
+            else if (random_number == 2)
+            {
+                Tank.shoot(turn);
+            }
+            else
+            {
+                Tank.see(turn);
+            }
+        }
     }
     void frame_loop() // main frame loop for the program
     {
@@ -399,24 +419,45 @@ public:
         displayBattlefield();
         for (int i = 0; i < step; i++)
         {
-            for (int x = 0; x < robot_numbers; x++)
+            for (int x = 0; x < robot_num; x++)
             {
+
                 cout << " now is turn " << x << endl
                      << endl;
-                cout << "PRESS ENTER TO CONTINUE";
-                cin.ignore();
+                // cout << "PRESS ENTER TO CONTINUE";
+                // cin.ignore();
                 dice(x);
                 y_value = 0;
             }
-
-            remaining_step--;
-            cout << "Remaining step = :" << remaining_step << endl;
+            Sleep(20);
+            remaining_step++;
+            cout << endl;
+            cout << endl;
+            cout << "Round = :" << remaining_step << endl;
             displayBattlefield();
             cout << endl;
+            if (winner_checker())
+
+                break;
+
+            if (remaining_step == step)
+            {
+                cout << " Round " << step << " has reached, simulation end" << endl;
+                break;
+            }
         };
     }
-    void type_checker(int x)
+    bool winner_checker()
     {
+
+        if (robot_num == 1)
+        {
+            cout << robot_name[0] << " is the last robot " << endl;
+            cout << "Only one robot left ,the simulation is end  " << endl;
+            return true;
+        }
+        else
+            return false;
     }
     void value_initialize()
     {
@@ -428,6 +469,8 @@ public:
             robot_destroyed.push_back(0);
             robot_upgraded.push_back(0);
             jump_left.push_back(3);
+            hide_left.push_back(3);
+            robot_tracked_target.push_back(0);
         }
 
         cout << "data initialize completely " << endl;
@@ -435,9 +478,9 @@ public:
 
     void displayBattlefield()
     {
+        robot_name_debug();
         int row = Row_number;
         int column = Column_number;
-
         for (int y = 0; y <= row * 2; ++y)
         {
             if (y % 2 != 0)
@@ -497,9 +540,9 @@ public:
     }
     bool check_robot_y()
     {
-        for (int i = 0; i < Row_number; i++)
+        for (int i = 0; i < robot_num; i++)
         {
-            if (y_value == robot_y_pos[i])
+            if (y_value == robot_y[i])
             {
                 check_robot_x(i);
             }
@@ -509,7 +552,7 @@ public:
     bool check_robot_x(int i) // passing the i value from the previous function as a parameter
                               //  for faster navigating and more straight forward solution
     {
-        if (x_value == robot_x_pos[i]) // a robot is found on the position
+        if (x_value == robot_x[i]) // a robot is found on the position
         {
             slot_occupied = 1;
             print_robot_name(i);
@@ -523,9 +566,10 @@ public:
     }
     void print_robot_name(int i)
     {
-        if (robot_namelist[i].length() >= 2) // print only the first two character of the robot name
+
+        if (robot_name[i].length() >= 2) // print only the first two character of the robot name
         {
-            cout << robot_namelist[i].substr(0, 2);
+            cout << robot_name[i].substr(0, 2);
         }
     }
 };
