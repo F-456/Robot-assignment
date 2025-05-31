@@ -19,82 +19,90 @@ data loading ...
 +--+--+--+--+--+--+--+--+
 5Ja|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Beron is thinking what to do next
+Nick is moving right 
  now is turn 2
 
-Jason is seeing now 
-robot Beron is found
-target found: Beron
+Beron is trying to shoot 
+robot Jason is found
+target found: Jason
+Jason is being shoot by Beron
+Jason has 2 lives left
+Jason is destroyed 
+Beron is upgrading into a RepelBot
+ ammo left: 9
  now is turn 3
 
-John is thinking what to do next
+Jason is trying to shoot 
+robot Beron is found
+target found: Beron
+Target Beron active a repel shot
+Jason is shoot by itself 
+Jason has 1 lives left
+ ammo left: 9
+ now is turn 4
+
+John is moving right 
 
 
 Round = :1
  1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
+1  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |Ni|  |  |  |  |  |  |
+3  |  |Ni|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 4Be|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5Ja|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving left 
  now is turn 1
 
-Beron is moving right 
-Beron is moving left 
+Nick is trying to shoot 
+No target is found in the range
+Nick did not find someone to shoot 
  now is turn 2
 
-Jason is thinking what to do next
+Beron is trying to shoot 
+robot Jason is found
+target found: Jason
+Jason is being shoot by Beron
+Jason is dead 
+Jason is destroyed 
+ The robot has already upgraded 
+ ammo left: 8
  now is turn 3
 
-John is thinking what to do next
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
 
 
 Round = :2
  1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
+1  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Ni|  |  |  |  |  |  |  |
+3  |  |Ni|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 4Be|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-robot Beron is found
-target found: Beron
-Beron is being shoot by Nick
- ammo left: 9
-Beron is destroyed 
-Robot Beron now have 2 lives left
-Nick is upgrading into a HideBot
  now is turn 1
 
-Beron is moving down right 
-Beron is moving up 
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-Jason is seeing now 
-robot Beron is found
-target found: Beron
+Beron is trying to shoot 
+No target is found in the range
+Beron did not find someone to shoot 
  now is turn 3
 
 John is thinking what to do next
@@ -102,373 +110,367 @@ John is thinking what to do next
 
 Round = :3
  1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
+1  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Ni|  |  |  |  |  |  |  |
+3  |  |Ni|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |Be|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is thinking what to do next
- now is turn 1
-
-Beron is thinking what to do next
- now is turn 2
-
-Jason is seeing now 
-robot Beron is found
-target found: Beron
- now is turn 3
-
-John is thinking what to do next
-
-
-Round = :4
- 1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3Ni|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |Be|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is trying to shoot 
-robot Beron is found
-target found: Beron
-Beron is being shoot by Nick
- ammo left: 8
-Beron is destroyed 
-Robot Beron now have 1 lives left
- The robot has already upgraded 
- now is turn 1
-
-Beron is thinking what to do next
- now is turn 2
-
-Jason is thinking what to do next
- now is turn 3
-
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
-
-
-Round = :5
- 1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3Ni|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |Be|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is seeing now 
-robot Beron is found
-target found: Beron
- now is turn 1
-
-Beron is thinking what to do next
- now is turn 2
-
-Jason is thinking what to do next
- now is turn 3
-
-John is thinking what to do next
-
-
-Round = :6
- 1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3Ni|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |Be|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is moving down 
- now is turn 1
-
-Beron is thinking what to do next
- now is turn 2
-
-Jason is thinking what to do next
- now is turn 3
-
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
-
-
-Round = :7
- 1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4Ni|Be|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Ja|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is trying to shoot 
-robot Beron is found
-target found: Beron
-Beron is being shoot by Nick
- ammo left: 7
-Beron is dead 
-deleted x and y are 2, 4
-Beron is destroyed 
-Robot Beron now have 3 lives left
- The robot has already upgraded 
- now is turn 1
-
-Jason is moving up right 
-Jason is moving right 
- now is turn 2
-
-John is seeing now 
-No target is found in the range
-
-
-Round = :8
- 1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4Ni|  |Ja|  |  |  |  |  |
+4Be|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is moving down 
-Jason is moving right 
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is seeing now 
+Beron is moving up right 
+ now is turn 3
+
+John is trying to shoot 
 No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :4
+ 1  2  3  4  5  6  7  8 
+1  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |Be|Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is seeing now 
+robot Beron is found
+target found: Beron
+ now is turn 2
+
+Beron is moving up 
+ now is turn 3
+
+John is seeing now 
+robot Beron is found
+target found: Beron
+
+
+Round = :5
+ 1  2  3  4  5  6  7  8 
+1  |  |Jo|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |Be|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |Ni|  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is moving right 
+ now is turn 2
+
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is moving down right 
+
+
+Round = :6
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |Be|  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |Ni|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is trying to shoot 
+robot John is found
+target found: John
+Nick miss the shot 
+ ammo left: 9
+ now is turn 2
+
+Beron is thinking what to do next
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :7
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |Be|  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |Ni|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is trying to shoot 
+robot John is found
+target found: John
+Nick miss the shot 
+ ammo left: 8
+ now is turn 2
+
+Beron is moving left 
+ now is turn 3
+
+John is seeing now 
+robot Nick is found
+target found: Nick
+
+
+Round = :8
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2Be|  |  |Jo|  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |Ni|  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is trying to shoot 
+robot John is found
+target found: John
+John is being shoot by Nick
+John has 2 lives left
+John is destroyed 
+Nick is upgrading into a RepelBot
+ ammo left: 7
+ now is turn 2
+
+Beron is moving down 
+ now is turn 3
+
+John is seeing now 
+robot Nick is found
+target found: Nick
 
 
 Round = :9
  1  2  3  4  5  6  7  8 
-1  |Jo|  |  |  |  |  |  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
+2  |  |  |Jo|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3Be|  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Ni|  |  |  |  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |  |Ja|  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is thinking what to do next
+Nick is thinking what to do next
  now is turn 2
 
-John is moving down left 
+Beron is moving right 
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :10
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2Jo|  |  |  |  |  |  |  |
+2  |  |  |Jo|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Ni|  |  |  |  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |  |Ja|  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is moving up right 
-Jason is moving left 
+Nick is thinking what to do next
  now is turn 2
 
-John is trying to shoot 
+Beron is trying to shoot 
 No target is found in the range
-John did not find someone to shoot 
+Beron did not find someone to shoot 
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :11
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2Jo|  |  |  |  |  |  |  |
+2  |  |  |Jo|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Ni|  |  |Ja|  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving down right 
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is seeing now 
+robot John is found
+target found: John
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is thinking what to do next
+ now is turn 3
+
+John is moving left 
 
 
 Round = :12
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2Jo|  |  |  |  |  |  |  |
+2  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |Ni|  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving right 
  now is turn 1
 
-Jason is trying to shoot 
-robot Nick is found
-target found: Nick
-Target Nick is hiding from the shoot
-Nick have 2 times of hide left
+Nick is moving down 
  now is turn 2
 
-John is moving right 
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is seeing now 
+robot Beron is found
+target found: Beron
 
 
 Round = :13
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Jo|  |  |  |  |  |  |
+2  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |Ni|  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-robot Jason is found
-target found: Jason
  now is turn 1
 
-Jason is seeing now 
-robot Nick is found
-target found: Nick
+Nick is moving down right 
  now is turn 2
 
-John is thinking what to do next
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is trying to shoot 
+robot Beron is found
+target found: Beron
+Beron is being shoot by John
+Beron has 2 lives left
+Beron is destroyed 
+John is upgrading into a ScoutBot
+ ammo left: 9
 
 
 Round = :14
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Jo|  |  |  |  |  |  |
+2  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |Ni|  |  |  |  |  |
+5  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up 
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is thinking what to do next
+Beron is trying to shoot 
+robot John is found
+target found: John
+Beron miss the shot 
+ ammo left: 7
+ now is turn 3
+
+John is scouting the entire battlefield
+Detected enemy: Nick [5, 5]
+Detected enemy: Beron [2, 3]
+Remaining scout: 2
 
 
 Round = :15
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Jo|  |  |  |  |  |  |
+2  |  |Jo|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |Ni|Ja|  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |  |  |  |  |  |  |
+5  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up right 
  now is turn 1
 
-Jason is trying to shoot 
-robot Nick is found
-target found: Nick
-Target Nick is hiding from the shoot
-Nick have 1 times of hide left
+Nick is thinking what to do next
  now is turn 2
 
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+Beron is thinking what to do next
+ now is turn 3
+
+John is moving left 
 
 
 Round = :16
@@ -477,26 +479,28 @@ Round = :16
 +--+--+--+--+--+--+--+--+
 2  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |Ni|  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5  |  |  |  |  |  |  |  |
+5  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is seeing now 
-robot Nick is found
-target found: Nick
+Nick is moving up left 
  now is turn 2
 
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
 John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+robot Beron is found
+target found: Beron
+John miss the shot 
+ ammo left: 8
 
 
 Round = :17
@@ -505,30 +509,28 @@ Round = :17
 +--+--+--+--+--+--+--+--+
 2  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |Ni|  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-robot Jason is found
-target found: Jason
  now is turn 1
 
-Jason is trying to shoot 
-robot Nick is found
-target found: Nick
-Target Nick is hiding from the shoot
-Nick have 0 times of hide left
+Nick is thinking what to do next
  now is turn 2
 
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
 John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+robot Beron is found
+target found: Beron
+John miss the shot 
+ ammo left: 7
 
 
 Round = :18
@@ -537,48 +539,55 @@ Round = :18
 +--+--+--+--+--+--+--+--+
 2  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |Ni|  |  |  |  |
+3  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is trying to shoot 
+robot John is found
+target found: John
+Beron miss the shot 
+ ammo left: 6
+ now is turn 3
+
+John is moving down left 
 
 
 Round = :19
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Jo|  |  |  |  |  |  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |Ni|  |  |  |  |
+3Jo|Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |Ja|  |  |  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is moving up right 
-Jason is moving down right 
+Nick is trying to shoot 
+No target is found in the range
+Nick did not find someone to shoot 
  now is turn 2
 
-John is moving down left 
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :20
@@ -587,23 +596,25 @@ Round = :20
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Jo|  |  |Ni|  |  |  |  |
+3Jo|Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |Ja|  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving left 
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is moving right 
 
 
 Round = :21
@@ -612,21 +623,22 @@ Round = :21
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Jo|  |Ni|  |  |  |  |  |
+3  |BeJo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |Ja|  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up 
  now is turn 1
 
-Jason is moving up right 
-Jason is moving up 
+Nick is thinking what to do next
  now is turn 2
+
+Beron is trying to shoot 
+No target is found in the range
+Beron did not find someone to shoot 
+ now is turn 3
 
 John is thinking what to do next
 
@@ -635,688 +647,542 @@ Round = :22
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |Ni|  |  |  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Jo|  |  |  |  |  |  |  |
+3  |BeJo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving left 
  now is turn 1
 
-Jason is moving right 
-Jason is moving left 
+Nick is moving up right 
  now is turn 2
 
-John is seeing now 
-robot Nick is found
-target found: Nick
+Beron is thinking what to do next
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :23
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3Jo|  |  |  |  |  |  |  |
+3  |BeJo|  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-robot John is found
-target found: John
-Nick miss the shot 
- ammo left: 6
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is moving right 
+Beron is thinking what to do next
+ now is turn 3
+
+John is scouting the entire battlefield
+Detected enemy: Nick [5, 3]
+Detected enemy: Beron [2, 3]
+Remaining scout: 1
 
 
 Round = :24
  1  2  3  4  5  6  7  8 
 1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |Jo|  |  |  |  |  |  |
+3  |BeJo|  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving down right 
  now is turn 1
 
-Jason is moving up left 
-Jason is moving right 
+Nick is trying to shoot 
+No target is found in the range
+Nick did not find someone to shoot 
  now is turn 2
 
-John is trying to shoot 
-robot Nick is found
-target found: Nick
-Nick is being shoot by John
- ammo left: 9
-Nick is destroyed 
-Robot Nick now have 2 lives left
-John is upgrading into a RepelBot
+Beron is moving left 
+ now is turn 3
+
+John is scouting the entire battlefield
+Detected enemy: Nick [5, 3]
+Detected enemy: Beron [1, 3]
+Remaining scout: 0
 
 
 Round = :25
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |Ja|  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |Jo|Ni|  |  |  |  |  |
+3Be|Jo|  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is seeing now 
+Nick is trying to shoot 
 No target is found in the range
+Nick did not find someone to shoot 
  now is turn 2
 
-John is trying to shoot 
-robot Nick is found
-target found: Nick
-Nick is being shoot by John
- ammo left: 8
-Nick is destroyed 
-Robot Nick now have 1 lives left
- The robot has already upgraded 
+Beron is thinking what to do next
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :26
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |Ja|  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |Jo|Ni|  |  |  |  |  |
+3Be|Jo|  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up left 
  now is turn 1
 
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
+Nick is moving down left 
  now is turn 2
 
-John is moving down left 
+Beron is moving down right 
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :27
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |Ja|  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
+4  |Be|  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up 
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is moving up 
  now is turn 2
 
-John is thinking what to do next
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :28
  1  2  3  4  5  6  7  8 
-1  |Ni|  |  |  |  |Ja|  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |Jo|  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
+4  |Be|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving down 
  now is turn 1
 
-Jason is moving down 
-Jason is moving up right 
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is thinking what to do next
+ now is turn 3
+
+John is moving down 
 
 
 Round = :29
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
+4  |BeJo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
  now is turn 1
 
-Jason is trying to shoot 
+Nick is seeing now 
 No target is found in the range
-Jason did not find someone to shoot 
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is thinking what to do next
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :30
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
+4  |BeJo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
  now is turn 1
 
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
+Nick is moving up 
  now is turn 2
+
+Beron is moving down right 
+ now is turn 3
 
 John is moving down 
 
 
 Round = :31
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |Jo|Be|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
+ now is turn 1
 
 Nick is seeing now 
 No target is found in the range
- now is turn 1
-
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
  now is turn 2
 
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+Beron is seeing now 
+robot John is found
+target found: John
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :32
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |Ni|  |  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |Jo|Be|  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is thinking what to do next
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is moving right 
  now is turn 2
+
+Beron is moving up right 
+ now is turn 3
 
 John is thinking what to do next
 
 
 Round = :33
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
+2  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |  |  |Be|  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is thinking what to do next
+Beron is moving down right 
+ now is turn 3
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
 
 
 Round = :34
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |Ni|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is moving right 
- now is turn 1
-
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
- now is turn 2
-
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
-
-
-Round = :35
- 1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |Ja|
-+--+--+--+--+--+--+--+--+
-2  |  |Ni|  |  |  |  |  |
+2  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 4  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |Jo|  |  |Be|  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving up left 
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is thinking what to do next
  now is turn 2
 
-John is seeing now 
+Beron is seeing now 
 No target is found in the range
-
-
-Round = :36
- 1  2  3  4  5  6  7  8 
-1  |Ni|  |  |  |  |  |Ja|
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
- now is turn 1
-
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
- now is turn 2
-
-John is moving up right 
-
-
-Round = :37
- 1  2  3  4  5  6  7  8 
-1  |Ni|  |  |  |  |  |Ja|
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |Jo|  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is moving right 
- now is turn 1
-
-Jason is thinking what to do next
- now is turn 2
-
-John is moving down left 
-
-
-Round = :38
- 1  2  3  4  5  6  7  8 
-1  |  |Ni|  |  |  |  |Ja|
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is moving right 
- now is turn 1
-
-Jason is seeing now 
-No target is found in the range
- now is turn 2
+ now is turn 3
 
 John is thinking what to do next
 
 
-Round = :39
+Round = :35
  1  2  3  4  5  6  7  8 
-1  |  |  |Ni|  |  |  |Ja|
+1  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |Ni|  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |Jo|  |  |Be|  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is moving up right 
+ now is turn 2
+
+Beron is trying to shoot 
+No target is found in the range
+Beron did not find someone to shoot 
+ now is turn 3
+
+John is moving up 
+
+
+Round = :36
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
 2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |  |  |  |Be|  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is moving down right 
  now is turn 1
 
-Jason is moving left 
-Jason is moving down 
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is trying to shoot 
+Beron is moving right 
+ now is turn 3
+
+John has use all the scout chance
+
+
+Round = :37
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |Be|  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is thinking what to do next
+ now is turn 2
+
+Beron is moving up right 
+ now is turn 3
+
+John is thinking what to do next
+
+
+Round = :38
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |Be|  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is thinking what to do next
+ now is turn 2
+
+Beron is trying to shoot 
 No target is found in the range
-John did not find someone to shoot 
+Beron did not find someone to shoot 
+ now is turn 3
+
+John has use all the scout chance
+
+
+Round = :39
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |Be|  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is thinking what to do next
+ now is turn 2
+
+Beron is trying to shoot 
+No target is found in the range
+Beron did not find someone to shoot 
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :40
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |Jo|  |  |  |  |Be|  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-No target is found in the range
  now is turn 1
 
-Jason is trying to shoot 
+Nick is trying to shoot 
 No target is found in the range
-Jason did not find someone to shoot 
+Nick did not find someone to shoot 
  now is turn 2
 
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+Beron is moving up left 
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :41
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |  |  |Be|  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-No target is found in the range
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is thinking what to do next
  now is turn 2
 
-John is trying to shoot 
-No target is found in the range
-John did not find someone to shoot 
+Beron is moving right 
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :42
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |Ja|  |
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |  |  |  |Be|  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4  |Jo|  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-No target is found in the range
  now is turn 1
 
-Jason is moving up 
-Jason is moving down right 
+Nick is moving left 
  now is turn 2
 
-John is seeing now 
-No target is found in the range
+Beron is moving up left 
+ now is turn 3
+
+John is thinking what to do next
 
 
 Round = :43
  1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |  |Ja|
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is seeing now 
-No target is found in the range
- now is turn 1
-
-Jason is seeing now 
-No target is found in the range
- now is turn 2
-
-John is moving up 
-
-
-Round = :44
- 1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |  |Ja|
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
- now is turn 1
-
-Jason is seeing now 
-No target is found in the range
- now is turn 2
-
-John is moving down 
-
-
-Round = :45
- 1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |  |Ja|
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
- now is turn 1
-
-Jason is trying to shoot 
-No target is found in the range
-Jason did not find someone to shoot 
- now is turn 2
-
-John is moving up 
-
-
-Round = :46
- 1  2  3  4  5  6  7  8 
-1  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-2  |  |  |  |Ni|  |  |Ja|
-+--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-4Jo|  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-5  |  |  |  |  |  |  |  |
-+--+--+--+--+--+--+--+--+
-
- now is turn 0
-
-Nick is moving up 
- now is turn 1
-
-Jason is seeing now 
-No target is found in the range
- now is turn 2
-
-John is moving right 
-
-
-Round = :47
- 1  2  3  4  5  6  7  8 
 1  |  |  |  |Ni|  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |Ja|
+2  |  |  |  |  |Be|  |  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
@@ -1325,16 +1191,130 @@ Round = :47
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is moving right 
  now is turn 2
+
+Beron is seeing now 
+robot Nick is found
+target found: Nick
+ now is turn 3
+
+John is trying to shoot 
+No target is found in the range
+John did not find someone to shoot 
+
+
+Round = :44
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |Be|  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is thinking what to do next
+ now is turn 2
+
+Beron is seeing now 
+robot Nick is found
+target found: Nick
+ now is turn 3
+
+John has use all the scout chance
+
+
+Round = :45
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |Be|  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is seeing now 
+robot Beron is found
+target found: Beron
+ now is turn 2
+
+Beron is seeing now 
+robot Nick is found
+target found: Nick
+ now is turn 3
+
+John has use all the scout chance
+
+
+Round = :46
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |Be|  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4  |Jo|  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is trying to shoot 
+robot Beron is found
+target found: Beron
+Beron is being shoot by Nick
+Beron has 1 lives left
+Beron is destroyed 
+ The robot has already upgraded 
+ ammo left: 6
+ now is turn 2
+
+Beron is seeing now 
+robot Nick is found
+target found: Nick
+ now is turn 3
+
+John is moving left 
+
+
+Round = :47
+ 1  2  3  4  5  6  7  8 
+1  |  |  |  |  |Ni|  |  |
++--+--+--+--+--+--+--+--+
+2  |  |  |  |  |Be|  |  |
++--+--+--+--+--+--+--+--+
+3  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+4Jo|  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+5  |  |  |  |  |  |  |  |
++--+--+--+--+--+--+--+--+
+
+ now is turn 1
+
+Nick is seeing now 
+robot Beron is found
+target found: Beron
+ now is turn 2
+
+Beron is moving down right 
+ now is turn 3
 
 John is trying to shoot 
 No target is found in the range
@@ -1343,69 +1323,68 @@ John did not find someone to shoot
 
 Round = :48
  1  2  3  4  5  6  7  8 
-1  |  |  |  |Ni|  |  |  |
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |Ja|
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |  |  |  |Be|  |
 +--+--+--+--+--+--+--+--+
-4  |Jo|  |  |  |  |  |  |
+4Jo|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is trying to shoot 
-No target is found in the range
-Nick did not find someone to shoot 
  now is turn 1
 
-Jason is thinking what to do next
+Nick is seeing now 
+No target is found in the range
  now is turn 2
 
-John is trying to shoot 
+Beron is seeing now 
 No target is found in the range
-John did not find someone to shoot 
+ now is turn 3
+
+John has use all the scout chance
 
 
 Round = :49
  1  2  3  4  5  6  7  8 
-1  |  |  |  |Ni|  |  |  |
+1  |  |  |  |  |Ni|  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |Ja|
+2  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-3  |  |  |  |  |  |  |  |
+3  |  |  |  |  |  |Be|  |
 +--+--+--+--+--+--+--+--+
-4  |Jo|  |  |  |  |  |  |
+4Jo|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
- now is turn 0
-
-Nick is seeing now 
-No target is found in the range
  now is turn 1
 
-Jason is seeing now 
-No target is found in the range
+Nick is moving down right 
  now is turn 2
 
-John is moving down left 
+Beron is trying to shoot 
+robot Nick is found
+target found: Nick
+Target Nick active a repel shot
+Beron is shoot by itself 
+Beron is dead 
+ ammo left: 7
 
 
 Round = :50
  1  2  3  4  5  6  7  8 
-1  |  |  |  |Ni|  |  |  |
+1  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-2  |  |  |  |  |  |  |Ja|
+2  |  |  |  |  |  |Ni|  |
 +--+--+--+--+--+--+--+--+
 3  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-4  |  |  |  |  |  |  |  |
+4Jo|  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
-5Jo|  |  |  |  |  |  |  |
+5  |  |  |  |  |  |  |  |
 +--+--+--+--+--+--+--+--+
 
  Round 50 has reached, simulation end

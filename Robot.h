@@ -1,13 +1,13 @@
 /**********|**********|**********|
-Program: robot.h
+Program: main.cpp / Frame.h/ Robot.h
 Course: Data Structures and Algorithms
 Trimester: 2410
-Name: Frank Carrano
-ID: 1071001234
-Lecture Section: TC101
-Tutorial Section: TT1L
-Email: abc123@yourmail.com
-Phone: 018-1234567
+Lecture Class: TC3L
+Tutorial Class: TT5L
+Trimester: 2430
+Member_1: 242UC244DD | TIEW FU SIANG | TIEW.FU.SIANG@student.mmu.edu.my |010-3706933
+Member_2: 242UC244PP | Nicholas Beh Zhi Yang | NICHOLAS.BEH.ZHI@student.mmu.edu.my | 011-65215166
+Member_3: 242UC24551 | LOW ZHENG HAO | LOW.ZHENG.HAO@student.mmu.edu.my | 013-8888444
 **********|**********|**********/
 
 #include <iostream>
@@ -28,7 +28,7 @@ vector<int> robot_x, robot_y, robot_looked, robot_lives, robot_destroyed, robot_
 vector<int> robot_upgraded;
 vector<int> jump_left, hide_left;
 vector<int> robot_tracked_target; // which single robot-index each bot is tracking, or -1 if none yet
-vector<bool> tank_shield_used;    // false by default, same index as robot
+vector<int> auto_repair_used;     // false by default, same index as robot
 vector<int> repel_left;
 
 // fetching data from frame h and load it to this file
@@ -280,12 +280,7 @@ void upgrade_robot(int turn)
             robot_genre[turn] = "DoubleBot";
             break;
         case 9:
-            robot_genre[turn] = "TankBot";
-            {
-                robot_genre[turn] = "TankBot";
-                robot_lives[turn]++;
-                tank_shield_used[turn] = false;
-            }
+            robot_genre[turn] = "AutoRepairBot";
             break;
         }
         cout << robot_name[turn] << " is upgrading into a " << robot_genre[turn] << endl;
@@ -294,7 +289,7 @@ void upgrade_robot(int turn)
         cout << " The robot has already upgraded " << endl;
 }
 
-void check_robot_dead(int target_position, int turn)
+void check_robot_dead(int target_position)
 {
 
     int dead_index = target_position;
@@ -303,7 +298,7 @@ void check_robot_dead(int target_position, int turn)
     {
         cout << robot_name[dead_index] << " is dead " << endl;
         robot_name.erase(robot_name.begin() + dead_index);
-        cout << "deleted x and y are " << robot_x[dead_index] << ", " << robot_y[dead_index] << endl;
+        // cout << "deleted x and y are " << robot_x[dead_index] << ", " << robot_y[dead_index] << endl;
         robot_x.erase(robot_x.begin() + dead_index);
         robot_y.erase(robot_y.begin() + dead_index);
         robot_lives.erase(robot_lives.begin() + dead_index);
@@ -314,6 +309,20 @@ void check_robot_dead(int target_position, int turn)
         hide_left.erase(hide_left.begin() + dead_index);
         robot_tracked_target.erase(robot_tracked_target.begin() + dead_index);
         robot_num--;
+    }
+    else
+        cout << robot_name[target_position] << " has " << robot_lives[target_position] << " lives left" << endl;
+}
+void check_left_ammo(int turn) // check if the robot has no ammo left
+{
+    if (robot_ammo_left[turn] == 0)
+    {
+
+        cout << robot_name[turn] << " has no ammo left and will be self destructed " << endl;
+        robot_lives[turn]--;
+        cout << "lives left " << robot_lives[turn] << endl;
+        robot_ammo_left[turn] = 10;
+        check_robot_dead(turn);
     }
 }
 
@@ -538,6 +547,7 @@ public:
         list_position = search_hit_target(target);
         if (!target.empty()) // shoot successfully
         {
+            robot_ammo_left[turn]--;
             if (robot_genre[list_position] == "HideBot" && hide_left[list_position] > 0)
             {
                 cout << "Target " << robot_name[list_position] << " is hiding from the shoot" << endl;
@@ -549,28 +559,24 @@ public:
                 cout << "Target " << robot_name[list_position] << " active a repel shot" << endl;
                 cout << robot_name[turn] << " is shoot by itself " << endl;
                 robot_lives[turn]--;
-                robot_ammo_left[turn]--;
+                check_robot_dead(turn);
                 repel_left[list_position]--;
-                cout << "Robot " << robot_name[turn] << " now have " << robot_lives[turn] << " lives left\n";
-                cout << " ammo left: " << robot_ammo_left[turn] << endl;
             }
             else if (random_number < 7) // 70 % will hit
             {
-                robot_ammo_left[turn]--;
                 cout << target << " is being shoot by " << robot_name[turn] << endl;
-                cout << " ammo left: " << robot_ammo_left[turn] << endl;
                 robot_lives[list_position]--;
-                check_robot_dead(list_position, turn);
+                check_robot_dead(list_position);
                 cout << target << " is destroyed " << endl;
-                cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
                 robot_destroyed[list_position] = 1;
                 upgrade_robot(turn);
             }
             else
             {
                 cout << robot_name[turn] << " miss the shot " << endl;
-                cout << " ammo left: " << robot_ammo_left[turn] - 1 << endl;
             }
+            cout << " ammo left: " << robot_ammo_left[turn] << endl;
+            check_left_ammo(turn);
         }
         else
         {
@@ -701,6 +707,7 @@ public:
         string target = long_range_search(x, y, 3);
         if (!target.empty()) // shoot successfully
         {
+            robot_ammo_left[turn]--;
             if (robot_genre[list_position] == "HideBot" && hide_left[list_position] > 0)
             {
                 cout << "Target " << robot_name[list_position] << " is hiding from the shoot" << endl;
@@ -712,20 +719,16 @@ public:
                 cout << "Target " << robot_name[list_position] << " active a repel shot" << endl;
                 cout << robot_name[turn] << " is shoot by itself " << endl;
                 robot_lives[turn]--;
-                robot_ammo_left[turn]--;
+                check_robot_dead(turn);
                 repel_left[list_position]--;
-                cout << "Robot " << robot_name[turn] << " now have " << robot_lives[turn] << " lives left\n";
-                cout << " ammo left: " << robot_ammo_left[turn] << endl;
             }
             else if (random_number < 7)
             {
                 cout << target << " is being shoot by " << robot_name[turn] << endl;
-                robot_ammo_left[turn]--;
-                cout << " ammo left: " << robot_ammo_left[turn] << endl;
                 list_position = search_hit_target(target);
                 robot_lives[list_position]--;
+                check_robot_dead(list_position);
                 cout << target << " is destroyed " << endl;
-                cout << "Robot " << target << " now have " << robot_lives[list_position] << " lives left\n";
                 robot_destroyed[list_position] = 1;
                 upgrade_robot(turn);
             }
@@ -733,6 +736,8 @@ public:
             {
                 cout << robot_name[turn] << " miss the long range shot " << endl;
             }
+            check_left_ammo(turn);
+            cout << " ammo left: " << robot_ammo_left[turn] << endl;
         }
         else
         {
@@ -758,8 +763,10 @@ public:
 
         MovingRobot::move(turn, x, y);
     }
-    void shoot(int turn) const override
+    void shoot(int turn) const override // shoot three times
     {
+        ShootingRobot::shoot(turn);
+        ShootingRobot::shoot(turn);
         ShootingRobot::shoot(turn);
     }
     void see(int turn) const override
@@ -891,16 +898,38 @@ public:
         }
     }
 };
-
-class TankBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
+void regenerate(int turn)
+{
+    if (robot_genre[turn] == "AutoRepairBot")
+    {
+        if (auto_repair_used[turn] < 3 && robot_lives[turn] < 3) // max 3 repairs allowed
+        {
+            auto_repair_used[turn]++;
+            robot_lives[turn]++;
+            cout << robot_name[turn] << " repaired 1 life point automatically. \n Total repairs used: " << auto_repair_used[turn] << ". Current lives: " << robot_lives[turn] << endl;
+        }
+        else if (robot_lives[turn] >= 3)
+        {
+            cout << robot_name[turn] << " is still in good condition no repair needed" << endl;
+        }
+        else
+        {
+            cout << robot_name[turn] << " has used all 3 auto repairs." << endl;
+        }
+    }
+}
+class AutoRepairBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
 {
 public:
+    // override think to custom repair
     void think(int turn) const override
     {
-        ThinkingRobot::think(turn);
+        cout << robot_name[turn] << " is repairing itself " << endl;
+        regenerate(turn);
     }
     void move(int turn, int &x, int &y) const override
     {
+
         MovingRobot::move(turn, x, y);
     }
     void shoot(int turn) const override
@@ -909,44 +938,8 @@ public:
     }
     void see(int turn) const override
     {
-        SeeingRobot::see(turn);
-    }
-    void take_damage(int turn)
-    {
-        if (robot_genre[turn] == "TankBot")
-        {
-            if (!tank_shield_used[turn])
-            {
-                cout << robot_name[turn] << "'s shield absorbed the damage!" << endl;
-                tank_shield_used[turn] = true;
-            }
-            else
-            {
-                robot_lives[turn]--;
-                cout << robot_name[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
 
-                if (robot_lives[turn] <= 0)
-                {
-                    cout << robot_name[turn] << " is destroyed!" << endl;
-                    robot_destroyed[turn] = 1;
-                }
-                else
-                {
-                    tank_shield_used[turn] = false; // reset shield for next life cycle if you want
-                }
-            }
-        }
-        else
-        {
-            // Default damage behavior for non-TankBot robots
-            robot_lives[turn]--;
-            cout << robot_name[turn] << " took damage and now has " << robot_lives[turn] << " lives left." << endl;
-            if (robot_lives[turn] <= 0)
-            {
-                cout << robot_name[turn] << " is destroyed!" << endl;
-                robot_destroyed[turn] = 1;
-            }
-        }
+        SeeingRobot::see(turn);
     }
 };
 class RepelBot : public ThinkingRobot, public MovingRobot, public ShootingRobot, public SeeingRobot
