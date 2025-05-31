@@ -1,13 +1,13 @@
 /**********|**********|**********|
-Program: YOUR_FILENAME.cpp / YOUR_FILENAME.h
+Program: main.cpp / Frame.h/ Robot.h
 Course: Data Structures and Algorithms
 Trimester: 2410
-Name: Frank Carrano
-ID: 1071001234
-Lecture Section: TC101
-Tutorial Section: TT1L
-Email: abc123@yourmail.com
-Phone: 018-1234567
+Lecture Class: TC3L
+Tutorial Class: TT5L
+Trimester: 2430
+Member_1: 242UC244DD | TIEW FU SIANG | TIEW.FU.SIANG@student.mmu.edu.my |010-3706933
+Member_2: 242UC244PP | Nicholas Beh Zhi Yang | NICHOLAS.BEH.ZHI@student.mmu.edu.my | 011-65215166
+Member_3: 242UC24551 | LOW ZHENG HAO | LOW.ZHENG.HAO@student.mmu.edu.my | 013-8888444
 **********|**********|**********/
 
 #include <iostream>
@@ -237,7 +237,7 @@ public:
         TrackBot track_bot;
         RepelBot shield;
         DoubleBot double_bot;
-        TankBot Tank;
+        AutoRepairBot repair;
 
         // int random_number = 4;
         int random_number = (rand() % 4);
@@ -433,23 +433,23 @@ public:
             }
         }
 
-        else if (robot_genre[turn] == "TankBot")
+        else if (robot_genre[turn] == "AutoRepairBot")
         {
             if (random_number == 0)
             {
-                Tank.think(turn);
+                repair.think(turn);
             }
             else if (random_number == 1)
             {
-                Tank.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
+                repair.move(turn, robot_x_pos[turn], robot_y_pos[turn]);
             }
             else if (random_number == 2)
             {
-                Tank.shoot(turn);
+                repair.shoot(turn);
             }
             else
             {
-                Tank.see(turn);
+                repair.see(turn);
             }
         }
     }
@@ -463,7 +463,7 @@ public:
             {
 
                 cout << "---------------------------------- " << endl
-                     <<"Now is turn " << x << endl;
+                     << "Now is turn " << x + 1 << endl;
                 // cout << "PRESS ENTER TO CONTINUE";
                 // cin.ignore();
                 dice(x);
@@ -510,7 +510,7 @@ public:
             jump_left.push_back(3);
             hide_left.push_back(3);
             robot_tracked_target.push_back(0);
-            tank_shield_used.push_back(0);
+            auto_repair_used.push_back(0);
             repel_left.push_back(0);
         }
 
