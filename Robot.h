@@ -659,7 +659,7 @@ public:
             y = teleport_y_pos;
             jump_left[turn]--;
             cout << " Robot " << robot_name[turn] << " has jumped to " << teleport_x_pos << " and " << teleport_y_pos << endl;
-            cout << jump_left[turn] << "jump are left" << endl;
+            cout << jump_left[turn] << " jump are left" << endl;
         }
         else
 

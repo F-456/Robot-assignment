@@ -462,8 +462,8 @@ public:
             for (int x = 0; x < robot_num; x++)
             {
 
-                cout << " now is turn " << x << endl
-                     << endl;
+                cout << "---------------------------------- " << endl
+                     <<"Now is turn " << x << endl;
                 // cout << "PRESS ENTER TO CONTINUE";
                 // cin.ignore();
                 dice(x);
